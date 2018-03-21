@@ -1,0 +1,654 @@
+1  a bordo  ADV
+1  a direito  ADV
+1  a dois passos  ADV
+1  a exemplo  ADV
+1  a favor de  PRP
+1  a ferro e fogo  ADV
+1  a fundo  ADV
+1  a fundo perdido  ADV
+1  a não ser que  KS
+1  a par  ADV
+1  a prazos  ADV
+1  a propósito de  PRP
+1  a prumo  ADV
+1  a tal ponto que  KS
+1  agência de notícias  N
+1  agência de viagens  N
+1  ainda quando  
+1  ano civil  N
+1  ano que vem  N
+1  ao acaso  ADV
+1  ao cabo  ADV
+1  ao cuidado de  PRP
+1  ao dispor  PRP
+1  ao fundo  ADV
+1  ao invés  ADV
+1  ao longe  ADV
+1  ao menos  ADV
+1  ao natural  ADV
+1  ao pé  PRP
+1  aos olhos de  PRP
+1  aos poucos  ADV
+1  aquando  PRP
+1  arame farpado  N
+1  armas de fogo  N
+1  assim que  ADV
+1  até mesmo  ADV
+1  até que ponto  ADV
+1  aço inoxidável  N
+1  balança comercial  N
+1  banco de dados  N
+1  barra do tribunal  N
+1  batatas fritas  N
+1  beco sem saída  N
+1  bem feito  ADJ
+1  bode expiatório  N
+1  boletim oficial  N
+1  braço robótico  N
+1  bóia de salvação  N
+1  cada qual  SPEC
+1  católico praticante  N
+1  cem por cento  ADV
+1  classe média  N
+1  com jeito  ADJ
+1  com prazer  ADV
+1  com respeito  ADV
+1  comércio por grosso  N
+1  contos de réis  N
+1  corpo docente  N
+1  cultura geral  N
+1  custos de produção  N
+1  da parte de  PRP
+1  da praxe  ADJ
+1  de antemão  ADV
+1  de bolso  ADJ
+1  de bom grado  ADV
+1  de campo  ADJ
+1  de caras  ADV
+1  de certo modo  ADV
+1  de cima  ADV
+1  de conta que  KS
+1  de efeito  ADJ
+1  de encontro  PRP
+1  de força  ADJ
+1  de frente  ADV
+1  de golpe  ADV
+1  de igual para igual  ADV
+1  de longe  ADV
+1  de madrugada  ADV
+1  de mais a mais  ADV
+1  de marca  ADJ
+1  de memória  ADV
+1  de mistura  ADV
+1  de modo algum  ADV
+1  de modo que  KS
+1  de outro modo  ADV
+1  de parte a parte  ADV
+1  de passagem  ADV
+1  de plano  ADV
+1  de preferência  ADV
+1  de quando em vez  ADV
+1  de relance  ADV
+1  de seguida  ADV
+1  de tal forma  ADV
+1  de tal modo que  KS
+1  de topo  ADV
+1  de uma assentada  ADV
+1  de vez  ADV
+1  debaixo de  PRP
+1  defronte de  PRP
+1  dentro em breve  ADV
+1  depois de amanhã  ADV
+1  desde então  ADV
+1  desde já  ADV
+1  diante  PRP
+1  dias de semana  N
+1  e por aí  ADV
+1  eis que  ADV
+1  em atenção a  PRP
+1  em benefício  PRP
+1  em bloco  ADJ
+1  em boa medida  ADV
+1  em cadeia  ADJ
+1  em cheio  ADV
+1  em claro  ADV
+1  em consciência  ADV
+1  em criança  ADV
+1  em código  ADJ
+1  em diante  ADV
+1  em exercício  ADJ
+1  em face  PRP
+1  em favor de  PRP
+1  em forma de  PRP
+1  em função de  PRP
+1  em homenagem a  PRP
+1  em lugar  PRP
+1  em massa  ADJ
+1  em ponto  ADV
+1  em público  ADV
+1  em redor  PRP
+1  em regra  ADV
+1  em resumo  ADV
+1  em separado  ADV
+1  em termos  PRP
+1  em troca  ADV
+1  em trânsito  ADV
+1  em via de  PRP
+1  em vida  ADV
+1  em última instância  ADV
+1  emenda constitucional  N
+1  ensino primário  N
+1  entrada livre  N
+1  entre dois fogos  ADV
+1  estado de emergência  N
+1  face  PRP
+1  festa de arromba  N
+1  fiel da balança  N
+1  fina flor  N
+1  fins de semana  N
+1  fio condutor  N
+1  fio de água  N
+1  fogos postos  N
+1  forças armadas  N
+1  golpe baixo  N
+1  golpe de estado  N
+1  graças a  PRP
+1  graças a deus  ADV
+1  grupo de pressão  N
+1  happy end  N
+1  hoje mesmo  ADV
+1  hoje à noite  ADV
+1  homem da rua  N
+1  homem de letras  N
+1  horário de trabalho  N
+1  ida e volta  ADV
+1  impostos de circulação  N
+1  inimigo figadal  N
+1  junta de freguesia  N
+1  juntas de freguesia  N
+1  junto com  PRP
+1  legítima defesa  N
+1  lençol freático  N
+1  letra morta  N
+1  letras garrafais  N
+1  liberdade de expressão  N
+1  luz verde  N
+1  lágrimas de crocodilo  N
+1  mais do que  ADV
+1  mar alto  N
+1  mea culpa  IN
+1  meio ambiente  N
+1  metro cúbico  N
+1  metros quadrados  N
+1  mil e um  NUM
+1  modo de vida  N
+1  má vontade  N
+1  nas quais  SPEC
+1  nem mesmo  ADV
+1  nem que  KS
+1  nesta altura  ADV
+1  no calor  PRP
+1  no fio  ADJ
+1  no geral  ADV
+1  novo mundo  PROP
+1  o inverso  N
+1  o maior número  N
+1  o mais possível  ADV
+1  o melhor possível  N
+1  o mundo inteiro  N
+1  o máximo  N
+1  o todo  N
+1  obra de referência  N
+1  orçamento do estado  N
+1  os demais  DET
+1  os últimos anos  N
+1  palavras de ordem  N
+1  pano de fundo  N
+1  para a direita  ADV
+1  para aqui  ADV
+1  para cima  ADV
+1  para com  PRP
+1  para sempre  ADV
+1  passagem de nível  N
+1  pedra de toque  N
+1  pelo direito  ADV
+1  pelo modo  ADV
+1  pelo qual  SPEC
+1  pequeno almoço  N
+1  placas giratórias  N
+1  pois que  KS
+1  política de austeridade  N
+1  pomo de discórdia  N
+1  ponto de mira  N
+1  ponto final  N
+1  ponto fraco  N
+1  pontos finais  N
+1  pontos fracos  N
+1  por assim dizer  ADV
+1  por cima de  PRP
+1  por completo  ADV
+1  por detrás de  PRP
+1  por diante  ADV
+1  por escrito  ADV
+1  por excelência  ADJ
+1  por força de  PRP
+1  por hora  ADV
+1  por lapso  ADV
+1  por maioria  ADJ
+1  por muito que  KS
+1  por ocasião  PRP
+1  por onde  ADV
+1  por ordem de  PRP
+1  por parte de  PRP
+1  por pouco não  ADV
+1  por querer  ADV
+1  por quê  ADV
+1  por sinal  ADV
+1  por via  PRP
+1  por via de  PRP
+1  postos de abastecimento  N
+1  pouco e pouco  ADV
+1  poços de petróleo  N
+1  primeiro ministro  N
+1  prisão preventiva  N
+1  produto nacional bruto  N
+1  profissão de fé  N
+1  propriamente dito  ADJ
+1  príncipe herdeiro  N
+1  próximo de  PRP
+1  qualquer um  SPEC
+1  quanto antes  ADV
+1  quedas de água  N
+1  quem quer que  SPEC
+1  questão de tempo  N
+1  rente  PRP
+1  revolução industrial  N
+1  salvo seja  IN
+1  salário mínimo  N
+1  seja quem for  SPEC
+1  sem rebuço  ADV
+1  ser humano  N
+1  sex appeal  N
+1  sob o signo  PRP
+1  sob pena de  PRP
+1  sociedade anónima  N
+1  tanto mais  ADV
+1  taxas de câmbio  N
+1  terra de ninguém  N
+1  trabalhos forçados  N
+1  um a um  ADV
+1  um lugar ao sol  N
+1  uma boa dose  N
+1  vaga de fundo  N
+1  valor patrimonial  N
+1  valor real  N
+1  via aérea  N
+1  vias férreas  N
+1  à conta  PRP
+1  à custa de  PRP
+1  à esquerda  ADV
+1  à flor  PRP
+1  à força de  PRP
+1  à hora  PRP
+1  à luz  PRP
+1  à maneira  PRP
+1  à margem de  PRP
+1  à medida que  ADV
+1  à mercê de  PRP
+1  à moda  PRP
+1  à razão de  PRP
+1  à vista de  PRP
+1  às boas  ADJ
+1  às costas  ADV
+1  às quais  SPEC
+1  ângulo recto  N
+1  órgãos de comunicação social  N
+2  a granel  ADV
+2  a menos que  KS
+2  a montante  ADV
+2  a retalho  ADV
+2  acerca de  PRP
+2  agente secreto  N
+2  ao encontro  PRP
+2  ao máximo  ADV
+2  ao qual  SPEC
+2  ao todo  ADV
+2  ao vivo  ADV
+2  aos olhos  PRP
+2  apesar disso  ADV
+2  aqui e ali  ADV
+2  até então  ADV
+2  com base em  PRP
+2  com efeito  ADV
+2  como que  KS
+2  construção civil  N
+2  de comprimento  ADJ
+2  de conta  ADJ
+2  de estilo  ADJ
+2  de estimação  ADJ
+2  de fundo  ADJ
+2  de futuro  ADV
+2  de morte  ADJ
+2  de perto  ADV
+2  de prata  ADJ
+2  de primeira  ADJ
+2  de quando em quando  ADV
+2  de surpresa  ADV
+2  de um lado  ADV
+2  de vez em quando  ADV
+2  de vista  ADV
+2  e silva  PROP
+2  em debate  ADV
+2  em dia  ADV
+2  em dinheiro  ADJ
+2  em flagrante  ADJ
+2  em obras  ADV
+2  em português  ADV
+2  em primeiro lugar  ADV
+2  em prol  PRP
+2  em suma  ADV
+2  em tempo de  PRP
+2  em virtude  PRP
+2  em vão  ADV
+2  fita gomada  N
+2  frente a  PRP
+2  golpe de misericórdia  N
+2  guerra civil  N
+2  guerra fria  N
+2  igreja católica  N
+2  lei orgânica  N
+2  liberdade de imprensa  N
+2  mais nada  ADV
+2  na frente  PRP
+2  na ordem do dia  ADV
+2  na presença  PRP
+2  no meio  PRP
+2  no meio de  PRP
+2  no que diz respeito  ADV
+2  nos termos  PRP
+2  não mais  ADV
+2  nível de vida  N
+2  o estrangeiro  N
+2  o que quer que  SPEC
+2  ontem de manhã  ADV
+2  outra vez  ADV
+2  pecado original  N
+2  pela qual  SPEC
+2  pelo meio  ADV
+2  pelos vistos  ADV
+2  por baixo  ADV
+2  por conta  ADJ
+2  por detrás  PRP
+2  por entre  PRP
+2  por trás  ADV
+2  por unanimidade  ADV
+2  por volta  PRP
+2  prata da casa  N
+2  quando  PRP
+2  quanto mais  SPEC
+2  quinze dias  N
+2  relações públicas  N
+2  rumo a  PRP
+2  seja como for  ADV
+2  seres humanos  N
+2  serviço militar  N
+2  sistema solar  N
+2  terra natal  N
+2  toda a vida  ADV
+2  tudo isto  SPEC
+2  tudo quanto  SPEC
+2  vinho do porto  N
+2  à beira de  PRP
+2  à maneira de  PRP
+2  à margem  PRP
+2  à primeira vista  ADV
+2  às tantas  ADV
+2  água potável  N
+2  águas minerais  N
+2  águas residuais  N
+3  a cargo de  PRP
+3  a mais de  PRP
+3  a menos  ADV
+3  a título de  PRP
+3  acerca  PRP
+3  ainda por cima  ADV
+3  ao lado de  PRP
+3  ao longo de  PRP
+3  ao passo que  KS
+3  bolsas de estudo  N
+3  cada vez que  ADV
+3  com vista a  PRP
+3  da qual  SPEC
+3  das quais  SPEC
+3  de agora  ADV
+3  de estudo  ADJ
+3  de noite  ADV
+3  de peso  ADJ
+3  de qualquer modo  ADV
+3  de repente  ADV
+3  de rigor  ADJ
+3  de saída  ADJ
+3  denominador comum  N
+3  dia a dia  ADV
+3  do qual  SPEC
+3  dívida pública  N
+3  em contrapartida  ADV
+3  em grande parte  ADV
+3  em nome de  PRP
+3  em princípio  ADV
+3  em questão  ADJ
+3  em torno de  PRP
+3  em vias de  PRP
+3  face a  PRP
+3  hoje em dia  ADV
+3  logo que  ADV
+3  meia hora  N
+3  muitas vezes  ADV
+3  na frente de  PRP
+3  na presença de  PRP
+3  nada menos  ADV
+3  nem por isso  ADV
+3  no dia anterior  ADV
+3  obras de arte  N
+3  outra coisa  N
+3  palavra de ordem  N
+3  para casa  ADV
+3  para lá  PRP
+3  por acaso  ADV
+3  por agora  ADV
+3  por aqui  ADV
+3  por isso que  KS
+3  por terra  ADV
+3  preço de venda  N
+3  relativamente a  PRP
+3  se calhar  ADV
+3  seja qual for  SPEC
+3  sociedade civil  N
+3  tudo isso  SPEC
+3  uma centena de  NUM
+3  à beira  PRP
+3  à porta fechada  ADV
+3  à qual  SPEC
+3  às vezes  ADV
+4  a pé  ADV
+4  ao contrário de  PRP
+4  ao fim da tarde  ADV
+4  ao que parece  ADV
+4  atrás  PRP
+4  campanha eleitoral  N
+4  dado que  KS
+4  de destaque  ADJ
+4  de espaço  ADV
+4  de graça  ADJ
+4  de qualquer forma  ADV
+4  de raiz  ADV
+4  de urgência  ADJ
+4  de volta  ADV
+4  debaixo  PRP
+4  desde há  PRP
+4  dois pontos  N
+4  em cima  PRP
+4  em comparação  ADV
+4  em favor  PRP
+4  em seguida  ADV
+4  em si  ADV
+4  fim de semana  N
+4  meia dúzia  N
+4  no caso de  PRP
+4  no qual  SPEC
+4  o povo  N
+4  por causa de  PRP
+4  por cima  ADV
+4  por enquanto  ADV
+4  por fim  ADV
+4  próximo  PRP
+4  quando não  ADV
+4  raios gama  N
+4  se bem que  KS
+4  sempre que  ADV
+4  tanto mais que  KS
+4  todo o mundo  SPEC
+4  todos os dias  ADV
+5  a cargo  PRP
+5  a favor  ADJ
+5  ainda assim  ADV
+5  ao ar livre  ADJ
+5  boa vontade  N
+5  da parte  PRP
+5  de lei  ADJ
+5  de manhã  ADV
+5  desde logo  ADV
+5  desta forma  ADV
+5  em frente  ADV
+5  em nome  PRP
+5  em relação a  PRP
+5  enquanto que  KS
+5  entre si  ADV
+5  logo a seguir  ADV
+5  menos de  ADV
+5  mercado de trabalho  N
+5  mesmo assim  ADV
+5  na medida em que  ADV
+5  nem sequer  ADV
+5  por um lado  ADV
+5  quer dizer  ADV
+6  a fim de  PRP
+6  a propósito  ADV
+6  a sério  ADV
+6  abaixo  PRP
+6  acima  PRP
+6  com vista  PRP
+6  de fora  ADV
+6  de forma a  PRP
+6  devido a  PRP
+6  em função  PRP
+6  em parte  ADV
+6  em vez  PRP
+6  frente  PRP
+6  jogos olímpicos  PROP
+6  muito tempo  N
+6  na qual  SPEC
+6  nessa altura  ADV
+6  para onde  ADV
+6  por si  ADV
+6  referente  PRP
+6  romance policial  N
+6  toda a gente  SPEC
+7  ao lado  PRP
+7  assim como  ADV
+7  capital social  N
+7  cerca  PRP
+7  em geral  ADV
+7  ensino superior  N
+8  a tempo  ADV
+8  além de  PRP
+8  além disso  ADV
+8  ao contrário  ADV
+8  de tratamento  ADJ
+8  em torno  PRP
+8  opinião pública  N
+8  ou seja  ADV
+8  para já  ADV
+8  perto  PRP
+8  perto de  PRP
+8  por que  ADV
+8  por vezes  ADV
+9  acima de  PRP
+9  em particular  ADV
+9  em vez de  PRP
+9  fora de  PRP
+9  mais ou menos  ADV
+9  pelo contrário  ADV
+9  por causa  PRP
+9  postos de trabalho  N
+9  uma vez  ADV
+10  de imediato  ADV
+10  em breve  ADV
+10  em termos de  PRP
+10  mais uma vez  ADV
+10  o qual  SPEC
+10  os quais  SPEC
+10  quanto a  PRP
+10  à volta  PRP
+11  as quais  SPEC
+11  de modo a  PRP
+11  dos quais  SPEC
+11  por sua vez  ADV
+12  em conjunto  ADV
+12  para além de  PRP
+13  a qual  SPEC
+13  de facto  ADV
+13  de resto  ADV
+13  desta vez  ADV
+13  em curso  ADJ
+13  fora  PRP
+13  no caso  PRP
+13  ponto de vista  N
+13  por parte  PRP
+14  ao mesmo tempo  ADV
+14  como se  KS
+14  dentro de  PRP
+14  desde que  KS
+14  devido  PRP
+14  em conta  ADV
+14  em vigor  ADV
+14  relativamente  PRP
+15  além  PRP
+15  dentro  PRP
+15  um pouco  ADV
+16  ainda que  KS
+16  dezenas de  DET
+17  cada um  SPEC
+17  de novo  ADV
+17  pela primeira vez  ADV
+17  tudo o que  SPEC
+18  ao longo  PRP
+18  em relação  PRP
+19  a partir de  PRP
+19  para além  PRP
+20  em casa  ADV
+21  cada vez mais  ADV
+21  tal como  
+22  uma vez que  KS
+23  em causa  ADJ
+23  por outro lado  ADV
+24  bem como  ADV
+27  já não  ADV
+27  já que  KS
+28  apesar  PRP
+29  a partir  PRP
+32  de acordo  ADV
+37  pelo menos  ADV
+38  por exemplo  ADV
+40  toda a  DET
+41  apesar de  PRP
+41  mais de  ADV
+42  todo o  DET
+47  o que  SPEC
+47  todas as  DET
+49  quanto  PRP
+58  no entanto  ADV
+72  todos os  DET
+73  do que  KS
+92  cerca de  ADV
+172  por cento  N
