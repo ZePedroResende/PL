@@ -1,5 +1,5 @@
 function generateHTML() {
-   print "<html>\n<meta charset=\"UTF-8\">\n<header>\n<h1>Lista de Verbos</h1>\n</header>"> "4.html"
+   print "<html>\n<meta charset=\"UTF-8\">\n<header>\n<h1>Dicionario implicito</h1>\n</header>"> "4.html"
    print "<body><table border='1'>"> "4.html"
    print "<tr><td> Palavra </td><td> Lema  </td><td> Pos </td></tr>"> "4.html"
 
