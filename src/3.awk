@@ -5,14 +5,8 @@ function generateHTML() {
 
    for (i in freq) {
    print "<tr><td>", freq[i],
-         "</td><td>", i, "</td></tr>" |" sort -k2nr >> 3.html" }
-
-
-}
-
-
-function end(){
-   print "</table></body><html>"> "3.html";
+         "</td><td>", i, "</td></tr>" |" sort -k2nr >> 3.html"
+   }
 }
 
 
