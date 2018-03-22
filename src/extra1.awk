@@ -10,10 +10,10 @@ function generateHTML() {
    print "<p>",i ,"</p>" > "5.html"
    }
 }
-
-
-  $0 ~ /^<\/(.*)?(>)?/ {if(frase != ""){frases[frase]++; frase=""};next}
-  $0 !~ /^<(.*)?(>)?/ {frase = frase" "$1 ; next}
+  /<p (.*)>/{STATE = 1}
+  /<\/p>/{if(frase != ""){frases[frase]++; frase=""};STATE=0;next}
+  /<\/s>/{if(STATE == 1){frase = frase"\n"};next}
+  $0 !~ /^<(\/)?(.*)?(>)?/{if(STATE == 1){frase = frase" "$1}; next}
 
 
 END{generateHTML();for (j in frases){print frases[j], j | "sort -nr" };}
