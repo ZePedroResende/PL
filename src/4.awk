@@ -4,8 +4,7 @@ function generateHTML() {
    print "<tr><td> Palavra </td><td> Lema  </td><td> Pos </td></tr>"> "4.html"
 
    for (i in lema) {
-   print "<tr><td>", i,"</td><td>", lema[i],
-         "</td><td>", pos[i], "</td></tr>" |" sort -k2nr >> 4.html"
+   print "<tr><td>", i ,"</td><td>", lema[i],"</td><td>", pos[i], "</td></tr>" |" sort -k2n >>4.html";
    }
 }
 

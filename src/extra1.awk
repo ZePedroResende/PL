@@ -4,7 +4,7 @@ function generateHTML() {
    print "<title> Frases implicitas</title>" > "5.html"
 
    for (i in frases) {
-   print "<p>",i ,"</p>" |" sort -k2nr >> 5.html"
+   print "<p>",i ,"</p>" > "5.html"
    }
 }
 
