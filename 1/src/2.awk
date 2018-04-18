@@ -1,6 +1,5 @@
 BEGIN{FS="\t" }
 
-
 function generateHTML() {
    print "<html>\n<meta charset=\"UTF-8\">\n<header>\n<h1>Lista de Multi Word Expression</h1>\n</header>"> "2.html"
    print "<body><table border='1'>"> "2.html"
