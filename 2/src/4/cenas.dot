@@ -1,0 +1,9 @@
+strict graph {
+                  jj                  --                  jj[label="1",weight="1"];
+                  jj                  --                 prh[label="1",weight="1"];
+                  jj                  --             ramalho[label="2",weight="2"];
+                 prh                  --                  jj[label="1",weight="1"];
+                 prh                  --             ramalho[label="1",weight="1"];
+             ramalho                  --                  jj[label="2",weight="2"];
+             ramalho                  --                 prh[label="1",weight="1"];
+}

@@ -83,7 +83,6 @@ void Graph::printStartGraph(){
   cout << "strict graph {" << endl;
 }
 
-/*
 int main(){
   Graph* g = new Graph();
   vector<string> autor ;
@@ -98,4 +97,3 @@ int main(){
   g->printRede();
   cout << "}"<< endl;
 }
-*/
