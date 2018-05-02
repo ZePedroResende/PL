@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wno-deprecated-register
+CFLAGS = -Wall -Wno-deprecated-register -std=c++11
 
 ifeq ($(OS),Windows_NT)
 	@echo "Cant't compile here, sorry :'("
@@ -15,8 +15,8 @@ endif
 
 um: um.l WordCounter.o
 	@flex --noyywrap um.l
-	$(CXX) -std=c++11 lex.yy.cc WordCounter.o -o um $(CFLAGS)
-	@rm lex.yy.cc
+	$(CXX) lex.yy.cc WordCounter.o -o um $(CFLAGS)
+	@rm lex.yy.cc WordCounter.o
 	@mv um ../build
 
 WordCounter.o:
