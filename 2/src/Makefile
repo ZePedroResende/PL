@@ -1,3 +1,5 @@
+CFLAGS = -Wall -Wno-deprecated-register
+
 ifeq ($(OS),Windows_NT)
 	@echo "Cant't compile here, sorry :'("
 	exit
@@ -10,12 +12,16 @@ else
 	CFLAGS += -lfl
 endif
 
-v=um
 
-$v: $v.l
-	flex --noyywrap $v.l
-	$(CXX) lex.yy.cc -o $v -lfl
-	rm lex.yy.cc
+um: um.l WordCounter.o
+	@flex --noyywrap um.l
+	$(CXX) -std=c++11 lex.yy.cc WordCounter.o -o um $(CFLAGS)
+	@rm lex.yy.cc
+
+WordCounter.o:
+	$(CXX) -c WordCounter.cpp -std=c++11
+
 clean:
-	rm um
+	@rm -rf um lex.yy.cc 2>/dev/null || true
+
 
