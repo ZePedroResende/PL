@@ -2,9 +2,18 @@
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
-
-using namespace std;
-
+#include <string>
+#include <cstring>
+#include <iostream>
+#include <stdexcept>
+#include <stdio.h>
+//using namespace std;
+using std::pair;
+using std::string;
+using std::unordered_map;
+using std::vector;
+using std::cout;
+using std::endl;
 class F {
 public:
     bool operator()(pair<int, string> left, pair<int, string> right) {

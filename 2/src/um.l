@@ -1,10 +1,10 @@
 %option c++
+%option noyywrap
 %{
 #include "words.h"
 int i=0;
 unordered_map<string,int> categorias;
 vector<pair<int, string> > catCount;
-extern "C" int yylex();
 %}
 
 STRING             [a-zA-Z]
@@ -16,10 +16,11 @@ STRING             [a-zA-Z]
 .                       ;
 
 %%
-
 int main(int argc, char *argv[]) {
 
-  yylex();
+  FlexLexer* lexer = new yyFlexLexer;
+  while(lexer->yylex() != 0)
+          ;
   for (auto p: categorias) {
     catCount.push_back(pair<int,string>{p.second,p.first});
   }
@@ -27,5 +28,5 @@ int main(int argc, char *argv[]) {
   for(auto p: catCount) {
     cout << p.second << "\t" << p.first << endl;
   }
-
+  return 0;
 }
