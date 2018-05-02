@@ -17,11 +17,12 @@ um: um.l WordCounter.o
 	@flex --noyywrap um.l
 	$(CXX) -std=c++11 lex.yy.cc WordCounter.o -o um $(CFLAGS)
 	@rm lex.yy.cc
+	@mv um ../build
 
 WordCounter.o:
 	$(CXX) -c WordCounter.cpp -std=c++11
 
 clean:
-	@rm -rf um lex.yy.cc 2>/dev/null || true
+	@rm -rf um lex.yy.cc *.o 2>/dev/null || true
 
 
