@@ -5,23 +5,24 @@
 #include "Graph.h"
 Graph* g = new Graph();
 vector<string> names;
-string  name;
+string  name ("\"");
 %}
 
 autor author([ \n\t]+)?=([ \n\t]+)?
-NOME [a-zA-ZáàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ ]
+LOL [a-zA-ZáàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ]
+NOME ([a-zA-Z]|á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô|Õ|Ú|Ç)
 
 %%
-[ \n\t]                       ;
-<*>{autor}  BEGIN AUTHOR;
-<AUTHOR>[{"]                    ;
-<AUTHOR>[ \n\t]+and[ \n\t]+                       { names.push_back(name); name.clear();}
-<AUTHOR>{NOME} { name.append(yytext);}
-<AUTHOR>([ \n\t]*)?[}"]([ \n\t]*)?,                    {names.push_back(name); name.clear();g->addColaborator(names); names.clear();BEGIN INITIAL;}
-<AUTHOR>[ \n\t]                       ;
-<AUTHOR>.                       ;
-
-.                             ;
+[ \n\t]                                                ;
+<*>{autor}                                             BEGIN AUTHOR;
+<AUTHOR>[{"]                                           ;
+<AUTHOR>([ \n\t]+)and([ \n\t]*)(and)?                      { name.append("\""); names.push_back(name); name.clear(); name.append("\"");}
+<AUTHOR>\.                                             { name.append("\\"); name.append(yytext); }
+<AUTHOR>[\n\t]                                         ;
+<AUTHOR>{NOME}                                         { name.append(yytext);}
+<AUTHOR>([ \n\t]*)?[}"]([ \n\t]*)?,                    { name.append("\""); names.push_back(name); name.clear(); name.append("\"");g->addColaborator(names); names.clear();BEGIN INITIAL;}
+<AUTHOR>.                                              ;
+.                                                      ;
 %%
 int main(int argc, char *argv[]) {
 
