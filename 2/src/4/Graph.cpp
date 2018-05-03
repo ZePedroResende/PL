@@ -74,15 +74,17 @@ void Graph::printColaborator(string pessoa){
 
 void Graph::printRede(){
 
+  printStartGraph();
   for (auto it : colaboracao) {
     printColaborator(it.first);
   }
+  cout<<"}"<< endl;
 }
 
 void Graph::printStartGraph(){
   cout << "strict graph {" << endl;
 }
-
+/*
 int main(){
   Graph* g = new Graph();
   vector<string> autor ;
@@ -97,3 +99,4 @@ int main(){
   g->printRede();
   cout << "}"<< endl;
 }
+*/

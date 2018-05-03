@@ -1,3 +1,5 @@
+CFLAGS = -Wall -Wno-deprecated-register -std=c++11
+
 ifeq ($(OS),Windows_NT)
 	@echo "Cant't compile here, sorry :'("
 	exit
@@ -10,12 +12,15 @@ else
 	CFLAGS += -lfl
 endif
 
-v=quatro
 
-$v: $v.l
-	flex --noyywrap $v.l
-	$(CXX) lex.yy.cc -o $v -lfl
-	rm lex.yy.cc
+quatro: quatro.l Graph.o
+	@flex --noyywrap quatro.l
+	$(CXX) lex.yy.cc Graph.o -o quatro $(CFLAGS)
+	@rm lex.yy.cc Graph.o
+	@mv quatro ../build
+
+Graph.o:
+	$(CXX) -c Graph.cpp -std=c++11
+
 clean:
-	rm quatro
-
+	@rm -rf quatro lex.yy.cc *.o *.ps *.dot 2>/dev/null || true
