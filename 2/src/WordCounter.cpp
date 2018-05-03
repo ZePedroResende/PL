@@ -10,96 +10,129 @@ bool WordCounter::comparator(pair<int, string> left, pair<int, string> right) {
   return false;
 }
 
-void WordCounter::printer() {
+void WordCounter::printer(int i) {
+  file.open("../html/1.html", ios_base::trunc);
   for (auto p: categorias) {
     catCount.push_back(pair<int,string>{p.second,p.first});
   }
   sort(catCount.begin(),catCount.end(), comparator);
-  htmlStart();
-  for(auto p: catCount) {
-    cout << "<tr class=\"row100 body\">" << endl;
-		cout << "<td class=\"cell100 column1\">" << p.second << "</td>" << endl;
-		cout << "<td class=\"cell100 column2\">" << p.first << "</td>" << endl;
-		cout << "</tr>" << endl;
-  }
-  htmlEnd();
+	if (!file.is_open()) {
+    cout << "Error while opening file 1.html" << endl;
+  } else {
+  	htmlStart(1);
+  	for(auto p: catCount) {
+    	file << "<tr class=\"row100 body\">" << endl;
+			file << "<td class=\"cell100 column1\">" << p.second << "</td>" << endl;
+			file << "<td class=\"cell100 column2\">" << p.first << "</td>" << endl;
+			file << "</tr>" << endl;
+  	}
+  	if (i==1) {
+			htmlEnd();
+		} else if (i==2) {
+			tableEnd();
+			htmlStart(i);
+			for (auto &t: catInfo) {
+				file << "<tr class=\"row100 body\">" << endl;
+				file << "<td class=\"cell100 column1\">" << t.first << "</td>" << endl;
+				file << "<td class=\"cell100 column2\">" << get<0>(t.second) << "</td>" << endl;
+				file << "<td class=\"cell100 column3\">" << get<1>(t.second) << "</td>" << endl;
+				file << "<td class=\"cell100 column4\">" << get<2>(t.second) << "</td>" << endl;
+				file << "</tr>" << endl;
+			}
+			htmlEnd();
+		}
+	}
 }
 
 void WordCounter::addWord(string text) {
   ++categorias[text];
 }
 
-void WordCounter::htmlStart() {
-  cout << "<!DOCTYPE html><html lang=\"en\">" << endl;
-  cout << "<head>" << endl;
-	cout << "<title>Categories</title>" <<endl;
-	cout << "<meta charset=\"UTF-8\">" <<endl;
-	cout << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" <<endl;
-  cout << "<!--===============================================================================================-->	" <<endl;
-	cout << "<link rel=\"icon\" type=\"image/png\" href=\"assets/images/icons/favicon.ico\"/>" <<endl;
-  cout << "<!--===============================================================================================-->" <<endl;
-	cout << "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/vendor/bootstrap/css/bootstrap.min.css\">" <<endl;
-  cout << "<!--===============================================================================================-->" <<endl;
-	cout << "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css\">" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/vendor/animate/animate.css\">" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/vendor/select2/select2.min.css\">" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/vendor/perfect-scrollbar/perfect-scrollbar.css\">" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/util.css\">" << endl;
-	cout << "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/main.css\">" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-  cout << "</head>" << endl;
-  cout << "<body>" << endl;
-	
-	cout << "<div class=\"limiter\">" << endl;
-	cout << "<div class=\"container-table100\">" << endl;
-	cout << "<div class=\"wrap-table100\">" << endl;
-	cout << "<div class=\"table100 ver1 m-b-110\">" << endl;
-	cout << "<div class=\"table100-head\">" << endl;
-	cout << "<table>" << endl;
-	cout << "<thead>" << endl;
-	cout << "<tr class=\"row100 head\">" << endl;
-	cout << "<th class=\"cell100 column1\">Categorias</th>" << endl;
-	cout << "<th class=\"cell100 column2\">Frequência</th>" << endl;
-	cout << "</tr>" << endl;
-	cout << "</thead>" << endl;
-	cout << "</table>" << endl;
-	cout << "</div>" << endl;
-  cout << "<div class=\"table100-body js-pscroll\">" << endl;
-	cout << "<table>" << endl;
-	cout << "<tbody>" << endl;
+void WordCounter::htmlStart(int i) {
+  file << "<!DOCTYPE html><html lang=\"en\">" << endl;
+  file << "<head>" << endl;
+	file << "<title>Categories</title>" <<endl;
+	file << "<meta charset=\"UTF-8\">" <<endl;
+	file << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" <<endl;
+  file << "<!--===============================================================================================-->	" <<endl;
+	file << "<link rel=\"icon\" type=\"image/png\" href=\"../assets/images/icons/favicon.ico\"/>" <<endl;
+  file << "<!--===============================================================================================-->" <<endl;
+	file << "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/vendor/bootstrap/css/bootstrap.min.css\">" <<endl;
+  file << "<!--===============================================================================================-->" <<endl;
+	file << "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css\">" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/vendor/animate/animate.css\">" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/vendor/select2/select2.min.css\">" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/vendor/perfect-scrollbar/perfect-scrollbar.css\">" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/util.css\">" << endl;
+	file << "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/main.css\">" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+  file << "</head>" << endl;
+  file << "<body>" << endl;
+	tableStart(i);
+}
+
+void WordCounter::tableStart(int i) {
+	file << "<div class=\"limiter\">" << endl;
+	file << "<div class=\"container-table100\">" << endl;
+	file << "<div class=\"wrap-table100\">" << endl;
+	file << "<div class=\"table100 ver1 m-b-110\">" << endl;
+	file << "<div class=\"table100-head\">" << endl;
+	file << "<table>" << endl;
+	file << "<thead>" << endl;
+	file << "<tr class=\"row100 head\">" << endl;
+	if (i==1) {
+		file << "<th class=\"cell100 column1\">Categorias</th>" << endl;
+		file << "<th class=\"cell100 column2\">Frequência</th>" << endl;
+	} else if (i==2) {
+		file << "<th class=\"cell100 column1\">Categoria</th>" << endl;
+		file << "<th class=\"cell100 column2\">Chave</th>" << endl;
+		file << "<th class=\"cell100 column3\">Autores</th>" << endl;
+		file << "<th class=\"cell100 column4\">Título</th>" << endl;
+	}
+	file << "</tr>" << endl;
+	file << "</thead>" << endl;
+	file << "</table>" << endl;
+	file << "</div>" << endl;
+  file << "<div class=\"table100-body js-pscroll\">" << endl;
+	file << "<table>" << endl;
+	file << "<tbody>" << endl;
+}
+
+void WordCounter::tableEnd() {
+	file << "</tbody>" << endl;
+	file << "</table>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
 }
 
 void WordCounter::htmlEnd() {
-  cout << "</tbody>" << endl;
-	cout << "</table>" << endl;
-	cout << "</div>" << endl;
-	cout << "</div>" << endl;
-	cout << "</div>" << endl;
-	cout << "</div>" << endl;
-	cout << "</div>" << endl;
-  cout << "<!--===============================================================================================-->	" << endl;
-	cout << "<script src=\"assets/vendor/jquery/jquery-3.2.1.min.js\"></script>" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<script src=\"assets/vendor/bootstrap/js/popper.js\"></script>" << endl;
-	cout << "<script src=\"assets/vendor/bootstrap/js/bootstrap.min.js\"></script>" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<script src=\"assets/vendor/select2/select2.min.js\"></script>" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<script src=\"assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js\"></script>" << endl;
-	cout << "<script>" << endl;
-	cout << "$('.js-pscroll').each(function(){" << endl;
-	cout << "var ps = new PerfectScrollbar(this);" << endl;
-  cout << "$(window).on('resize', function(){" << endl;
-	cout << "ps.update();" << endl;
-	cout << "})" << endl;
-	cout << "});" << endl;		
-	cout << "</script>" << endl;
-  cout << "<!--===============================================================================================-->" << endl;
-	cout << "<script src=\"assets/js/main.js\"></script>" << endl;
-  cout << "</body>" << endl;
-  cout << "</html>" << endl;
+  tableEnd();
+  file << "<!--===============================================================================================-->	" << endl;
+	file << "<script src=\"../assets/vendor/jquery/jquery-3.2.1.min.js\"></script>" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<script src=\"../assets/vendor/bootstrap/js/popper.js\"></script>" << endl;
+	file << "<script src=\"../assets/vendor/bootstrap/js/bootstrap.min.js\"></script>" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<script src=\"../assets/vendor/select2/select2.min.js\"></script>" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<script src=\"../assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js\"></script>" << endl;
+	file << "<script>" << endl;
+	file << "$('.js-pscroll').each(function(){" << endl;
+	file << "var ps = new PerfectScrollbar(this);" << endl;
+  file << "$(window).on('resize', function(){" << endl;
+	file << "ps.update();" << endl;
+	file << "})" << endl;
+	file << "});" << endl;		
+	file << "</script>" << endl;
+  file << "<!--===============================================================================================-->" << endl;
+	file << "<script src=\"../assets/js/main.js\"></script>" << endl;
+  file << "</body>" << endl;
+  file << "</html>" << endl;
 }

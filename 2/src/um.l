@@ -18,6 +18,6 @@ int main(int argc, char *argv[]) {
 
   FlexLexer* lexer = new yyFlexLexer;
   while(lexer->yylex() != 0);
-  wc->printer();
+  wc->printer(1);
   return 0;
 }

@@ -14,10 +14,18 @@ endif
 
 
 um: um.l WordCounter.o
+	@mkdir -p ../build
 	@flex --noyywrap um.l
 	$(CXX) lex.yy.cc WordCounter.o -o um $(CFLAGS)
 	@rm lex.yy.cc WordCounter.o
 	@mv um ../build
+
+dois: dois.l WordCounter.o
+	@mkdir -p ../build
+	@flex --noyywrap dois.l
+	$(CXX) lex.yy.cc WordCounter.o -o dois $(CFLAGS)
+	@rm lex.yy.cc WordCounter.o
+	@mv dois ../build
 
 WordCounter.o:
 	$(CXX) -c WordCounter.cpp -std=c++11
