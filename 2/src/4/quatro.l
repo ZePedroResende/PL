@@ -6,6 +6,7 @@
 Graph* g = new Graph();
 vector<string> names;
 string  name ("\"");
+ofstream ofs;
 %}
 
 autor author([ \n\t]+)?=([ \n\t]+)?
@@ -25,9 +26,20 @@ NOME ([a-zA-Z]|á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô
 .                                                      ;
 %%
 int main(int argc, char *argv[]) {
-
   FlexLexer* lexer = new yyFlexLexer;
-  while(lexer->yylex() != 0);
-  g->printRede();
+  if (argc == 1){
+    while(lexer->yylex() != 0);
+  }
+  if (argc == 2){
+    yyin = fopen(argv[2], "r");
+    while(lexer->yylex() != 0);
+    g->printRede();
+  }
+
+  if (argc == 3){
+    yyin = fopen(argv[2], "r");
+    while(lexer->yylex() != 0);
+    g->printRede();
+  }
   return 0;
 }
