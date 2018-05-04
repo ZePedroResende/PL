@@ -13,16 +13,19 @@ else
 endif
 
 
-um: um.l WordCounter.o
-	@flex --noyywrap um.l
-	$(CXX) lex.yy.cc WordCounter.o -o um $(CFLAGS)
-	@rm lex.yy.cc WordCounter.o
-	@mv um ../build
+tres: tres.l Authors.o Registo.o
+	@flex --noyywrap tres.l
+	$(CXX) lex.yy.cc Authors.o Registo.o -o tres $(CFLAGS)
+	@rm lex.yy.cc Authors.o Registo.o
+	@mv tres ../build
 
-WordCounter.o:
-	$(CXX) -c WordCounter.cpp -std=c++11
+Authors.o:
+	$(CXX) -c Authors.cpp -std=c++11
+
+Registo.o:
+	$(CXX) -c Registo.cpp -std=c++11
 
 clean:
-	@rm -rf um lex.yy.cc *.o 2>/dev/null || true
+	@rm -rf tres lex.yy.cc *.o 2>/dev/null || true
 
 
