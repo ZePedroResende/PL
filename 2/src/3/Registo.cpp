@@ -26,3 +26,19 @@ void Registo::setKey(string k){
 void Registo::setTitulo(string t){
     titulo = t;
 }
+
+string Registo::getAutor(){
+    return autor;
+}
+
+string Registo::getYear(){
+    return year;
+}
+
+string Registo::getKey(){
+    return keyword;
+}
+
+string Registo::getTitulo(){
+    return titulo;
+}

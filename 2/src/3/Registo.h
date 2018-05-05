@@ -25,4 +25,8 @@ class Registo{
         void setYear(string);
         void setKey(string);
         void setTitulo(string);
+        string getAutor();
+        string getYear();
+        string getKey();
+        string getTitulo();
 };
