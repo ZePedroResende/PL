@@ -18,19 +18,17 @@ Registo* regs = new Registo();
 
 %}
 
-%x AUTHOR TITLE YEAR KEYWORD
+%x CATEGORY AUTHOR TITLE YEAR KEYWORD
 
 NOME ([a-zA-Z]|á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô|Õ|Ú|Ç|:|,)
 YEAR [yY][eE][aA][rR]
+AUTOR [aA][uU][tT][hH][oO][rR]
+TITLE [tT][iI][tT][lL][eE]
 
 %%
-author[\ \t]*=[\ \t]*[\{\"]+            {BEGIN AUTHOR;}
+{AUTOR}[\ \t]*=[\ \t]*[\{\"]+            {BEGIN AUTHOR;}
 
-AUTHOR[\ \t]*=[\ \t]*[\{\"]+            {BEGIN AUTHOR;}
-
-(\ )*title[\ \t]*=[\ \t]*[\{\"]         {BEGIN TITLE;}
-
-(\ )*TITLE[\ \t]*=[\ \t]*[\{\"]         {BEGIN TITLE;}
+(\ )*{TITLE}[\ \t]*=[\ \t]*[\{\"]+       {BEGIN TITLE;}
 
 (\ )+{YEAR}[\ \t]*=[\ \t]*[\{\"]*       {BEGIN YEAR;}
 
@@ -42,7 +40,7 @@ keyword[\ \t]*=[\ \t]*[\{\"]            {BEGIN KEYWORD;}
 
 <AUTHOR>(and[\ \n]*)+                   {auth->addAutor(autor); autor.clear();}
 
-<AUTHOR>{NOME}+                         {autor = autor + yytext; }
+<AUTHOR>({NOME}|\.)+                         {autor = autor + yytext; }
 
 <TITLE>[\"\}],                          {auth->addTitulo(titulo); titulo.clear(); BEGIN 0;}
 
@@ -58,7 +56,7 @@ keyword[\ \t]*=[\ \t]*[\{\"]            {BEGIN KEYWORD;}
 
 <KEYWORD>[\"\}]                         {auth->addKey(keyword); keyword.clear(); BEGIN 0;}
 
-<KEYWORD>\n|\"|\{|\}|\+|\=|\.|\?|\\|\$                   ;
+<KEYWORD>\n|\"|\{|\}|\+|\=|\.|\?|\\|\$  ;
 
 <KEYWORD>{NOME}+                        {keyword = keyword + yytext;}
 

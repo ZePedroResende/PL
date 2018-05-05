@@ -15,20 +15,19 @@ void Authors::addAutor(string a){
 
 void Authors::addTitulo(string a){
     titulos.push_back(a);
-
     titulos.clear();
 }
 
 void Authors::addKey(string a){
     keys.push_back(a);
-    for(int i=0; i<keys.size(); i++){
-        cout << keys.at(i) << endl;
-    }
     keys.clear();
 }
 
 void Authors::addYear(string a){
     years.push_back(a);
+     for(int i=0; i<years.size(); i++){
+        cout << years.at(i) << endl;
+    }
     years.clear();
 }
 
