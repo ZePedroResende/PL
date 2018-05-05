@@ -32,11 +32,14 @@ ALL                [.\n]
 <dentro_categoria>[ \t]*\}          {cout<<"OUT"<<endl;BEGIN 0;}
 <dentro_categoria>.                 ;
 
-
-<processa_autor>(.+)/([\"\}],)       {cout<<"AUTOR -->"<<yytext<<endl;BEGIN (processa_titulo); cout << "BEGIN TITULO!" << endl;}
+<processa_autor>[ \t]*{TITLE}             {BEGIN (processa_titulo); cout << "BEGIN TITULO!" << endl;}
+<processa_autor>(.+)/([\"\}],)       {cout<<"AUTOR -->"<<yytext<<endl;}
+<processa_autor>\n                 ; 
 <processa_autor>.                 ;
 
-<processa_titulo>{TITLE}(.+)/([\"\}],)       {cout<<"TITULO -->"<<yytext<<endl;BEGIN 0;}
+
+<processa_titulo>(.+)/([\"\}],)       {cout<<"TITULO -->"<<yytext<<endl;BEGIN 0;}
+<processa_titulo>\n                 ; 
 <processa_titulo>.                 ;
 %%
 int main(int argc, char *argv[]) {
