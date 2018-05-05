@@ -1,7 +1,7 @@
 %option c++
 %option noyywrap
 
-%x dentro_categoria processa_autor processa_titulo
+%x dentro_categoria titulo autor
 
 %{
 #include "words.h"
@@ -26,21 +26,21 @@ ALL                [.\n]
                         BEGIN(dentro_categoria);}
 .                       ;
 
+<dentro_categoria>\n                     ;
+<dentro_categoria>[[:alnum:]]+[ \t]*\,   {yytext[yyleng-1]='\0';cout<< "Código: "<< yytext<<endl;}
+<dentro_categoria>{TITLE}                         {BEGIN (titulo);}
+<dentro_categoria>{AUTHOR}                        {BEGIN (autor);}
+<dentro_categoria>([ \t]*)\}([ \t]*)\n                      {cout<<"OUT!"<< endl;BEGIN 0;}
+<dentro_categoria>.                  ;
 
-<dentro_categoria>[[:alnum:]]+[ \t]*\,   {yytext[yyleng-1]='\0';printf("Código: %s", yytext);}
-<dentro_categoria>{AUTHOR}          {BEGIN (processa_autor);}
-<dentro_categoria>[ \t]*\}          {cout<<"OUT"<<endl;BEGIN 0;}
-<dentro_categoria>.                 ;
+<autor>\n                 putchar(' ');
+<autor>(.+)/([\"\}],)     {cout << "AUTOR -->"<< yytext <<endl; BEGIN (dentro_categoria);}
+<autor>.                  ;
 
-<processa_autor>^[ \t]*{TITLE}             {BEGIN (processa_titulo); cout << "BEGIN TITULO!" << endl;}
-<processa_autor>(.+)/([\"\}],)       {cout<<"AUTOR -->"<<yytext<<endl;}
-<processa_autor>\n                 ; 
-<processa_autor>.                 ;
+<titulo>\n                 putchar(' ');
+<titulo>(.+)/([\"\}],)     {cout << "TITULO -->"<< yytext <<endl; BEGIN 0;}
+<titulo>.                  ;
 
-
-<processa_titulo>(.+)/([\"\}],)       {cout<<"TITULO -->"<<yytext<<endl;BEGIN 0;}
-<processa_titulo>\n                 ; 
-<processa_titulo>.                 ;
 %%
 int main(int argc, char *argv[]) {
 

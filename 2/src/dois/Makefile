@@ -20,10 +20,10 @@ dois: dois.l WordCounter.o
 	@rm lex.yy.cc WordCounter.o
 	@mv dois ../../build
 
-dois1: dois.1.l WordCounter.o
+dois2: dois.2.l WordCounter.o
 	@mkdir -p ../../build
-	@flex --noyywrap dois.1.l
-	$(CXX) lex.yy.cc WordCounter.o -o dois1 $(CFLAGS)
+	@flex --noyywrap dois.2.l
+	$(CXX) lex.yy.cc WordCounter.o -o dois2 $(CFLAGS)
 	@rm lex.yy.cc WordCounter.o
 
 
