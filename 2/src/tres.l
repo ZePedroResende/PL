@@ -5,60 +5,64 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<cstring>
+#include<memory>
 
 #include "Authors.h"
 
 using namespace std;
 
 int findN=0;
-string autor = "", titulo="", book="";
+string autor = "", titulo="", year="", keyword="";
 Authors* auth = new Authors();
 Registo* regs = new Registo();
 
 %}
 
-%x CATEGORY AUTHOR TITLE BOOKTITLE NOTE ADDRESS YEAR 
+%x AUTHOR TITLE YEAR KEYWORD
 
-STRING [a-zA-z|ú|à|á|â|é|í|ç|ã|ì|õ|.]
+NOME ([a-zA-Z]|á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô|Õ|Ú|Ç|:|,)
+YEAR [yY][eE][aA][rR]
 
 %%
-author[\ \t]*=[\ \t]*[\{\"]+        {BEGIN AUTHOR;}
+author[\ \t]*=[\ \t]*[\{\"]+            {BEGIN AUTHOR;}
 
-AUTHOR[\ \t]*=[\ \t]*[\{\"]+        {BEGIN AUTHOR;}
+AUTHOR[\ \t]*=[\ \t]*[\{\"]+            {BEGIN AUTHOR;}
 
-(\ )*title[\ \t]*=[\ \t]*[\{\"]     {BEGIN TITLE;}
+(\ )*title[\ \t]*=[\ \t]*[\{\"]         {BEGIN TITLE;}
 
-(\ )*TITLE[\ \t]*=[\ \t]*[\{\"]     {BEGIN TITLE;}
+(\ )*TITLE[\ \t]*=[\ \t]*[\{\"]         {BEGIN TITLE;}
 
-booktitle[\ \t]*=[\ \t]*[\{\"]     {BEGIN BOOKTITLE;}
+(\ )+{YEAR}[\ \t]*=[\ \t]*[\{\"]*       {BEGIN YEAR;}
 
-BOOKTITLE[\ \t]*=[\ \t]*[\{\"]     {BEGIN BOOKTITLE;}
+keyword[\ \t]*=[\ \t]*[\{\"]            {BEGIN KEYWORD;}
 
-<AUTHOR>[\"\}],                                    {auth->addAutor(autor); autor=""; BEGIN 0;}
+<AUTHOR>[\"\}],                         {auth->addAutor(autor); autor.clear(); BEGIN 0;}
 
-<AUTHOR>\ |\n|\{|\}|(\\)                           ;
+<AUTHOR>\ |\n|\{|\}|\\|\(|\)                ;
 
-<AUTHOR>(and[\ \n]*)+                              {auth->addAutor(autor); autor="";}
+<AUTHOR>(and[\ \n]*)+                   {auth->addAutor(autor); autor.clear();}
 
-<AUTHOR>{STRING}+                                  {autor = autor + yytext;}
+<AUTHOR>{NOME}+                         {autor = autor + yytext; }
 
-<TITLE>[\"\}],                                     {auth->addTitulo(titulo); titulo=""; BEGIN 0;}
+<TITLE>[\"\}],                          {auth->addTitulo(titulo); titulo.clear(); BEGIN 0;}
 
-<TITLE>\}                                          {titulo = titulo + yytext;}
+<TITLE>\n|\"|\{|\}                      ;
 
-<TITLE>[a-zA-Z0-9\-\ :\,\'\\\#\{]+                 {titulo = titulo + yytext;}
+<TITLE>[a-zA-Z0-9\-\ :\,\'\\\#]+        {titulo = titulo + yytext;}
 
-<TITLE>\n|\"                                       ;
+<YEAR>(\})?,                            {auth->addYear(year); year.clear(); BEGIN 0;}
 
-<BOOKTITLE>[\"\}],                                 {auth->addBook(book); book.clear(); BEGIN 0;}
+<YEAR>\n|\"|\{|\}|\+|\=|\.|\,|\(|\)     ;
 
-<BOOKTITLE>\}                                      {cout << yytext << endl; book.append(yytext);}
+<YEAR>[0-9]+                            {year = year + yytext;}
 
-<BOOKTITLE>[a-zA-Z0-9\-\ :\,'\\\#\{\$]+           {cout << yytext << endl; book.append(yytext);}
+<KEYWORD>[\"\}]                         {auth->addKey(keyword); keyword.clear(); BEGIN 0;}
 
-<BOOKTITLE>\n|\"                                   ;
+<KEYWORD>\n|\"|\{|\}|\+|\=|\.|\?|\\|\$                   ;
 
-.|\n	                                             ;
+<KEYWORD>{NOME}+                        {keyword = keyword + yytext;}
+
+.|\n	                                  ;
 
 %%
 int main(int argc, char *argv[]) {

@@ -16,12 +16,14 @@ class Authors{
     private:
         vector<string> autores;
         vector<string> titulos;
-        vector<string> books;
+        vector<string> keys;
+        vector<string> years;
     public:
         Authors();
         vector<string> getAutores();
         void addAutor(string);
         void addTitulo(string);
-        void addBook(string);
+        void addKey(string);
+        void addYear(string);
         void makeIndex();
 };

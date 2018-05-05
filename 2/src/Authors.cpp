@@ -10,29 +10,26 @@ vector<string> Authors::getAutores(){
 
 void Authors::addAutor(string a){
     autores.push_back(a);
-
-    for(int i=0; i<autores.size(); ++i){
-        //cout << autores.at(i) << endl;
-    }
     autores.clear();
 }
 
 void Authors::addTitulo(string a){
     titulos.push_back(a);
 
-    for(int i=0; i<titulos.size(); ++i){
-        //cout << titulos.at(i) << endl;
-    }
     titulos.clear();
 }
 
-void Authors::addBook(string a){
-    books.push_back(a);
-
-    for(int i=0; i<books.size(); ++i){
-        //cout << books.at(i) << endl;
+void Authors::addKey(string a){
+    keys.push_back(a);
+    for(int i=0; i<keys.size(); i++){
+        cout << keys.at(i) << endl;
     }
-    books.clear();
+    keys.clear();
+}
+
+void Authors::addYear(string a){
+    years.push_back(a);
+    years.clear();
 }
 
 void Authors::makeIndex(){
