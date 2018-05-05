@@ -1,54 +1,49 @@
 #include "words.h"
 
-WordCounter::WordCounter(){
+TextAnalizer::TextAnalizer(){
 
 }
 
-bool WordCounter::comparator(pair<int, string> left, pair<int, string> right) {
+bool TextAnalizer::comparator(pair<int, string> left, pair<int, string> right) {
   if (left.first > right.first) return true;
   if (left.first == right.first && left.second < right.second) return true;
   return false;
 }
 
-void WordCounter::printer(int i) {
-  file.open("../html/1.html", ios_base::trunc);
+void TextAnalizer::printer() {
+  file.open("../../html/2.html", ios_base::trunc);
   for (auto p: categorias) {
     catCount.push_back(pair<int,string>{p.second,p.first});
   }
   sort(catCount.begin(),catCount.end(), comparator);
 	if (!file.is_open()) {
-    cout << "Error while opening file 1.html" << endl;
+    cout << "Error while opening file 2.html" << endl;
   } else {
-  	htmlStart(1);
+  	htmlStart();
   	for(auto p: catCount) {
     	file << "<tr class=\"row100 body\">" << endl;
 			file << "<td class=\"cell100 column1\">" << p.second << "</td>" << endl;
 			file << "<td class=\"cell100 column2\">" << p.first << "</td>" << endl;
 			file << "</tr>" << endl;
-  	}
-  	if (i==1) {
-			htmlEnd();
-		} else if (i==2) {
-			tableEnd();
-			htmlStart(i);
-			for (auto &t: catInfo) {
-				file << "<tr class=\"row100 body\">" << endl;
-				file << "<td class=\"cell100 column1\">" << t.first << "</td>" << endl;
-				file << "<td class=\"cell100 column2\">" << get<0>(t.second) << "</td>" << endl;
-				file << "<td class=\"cell100 column3\">" << get<1>(t.second) << "</td>" << endl;
-				file << "<td class=\"cell100 column4\">" << get<2>(t.second) << "</td>" << endl;
-				file << "</tr>" << endl;
-			}
-			htmlEnd();
 		}
+		htmlMiddle();
+		for (auto &t: catInfo) {
+			file << "<tr class=\"row100 body\">" << endl;
+			file << "<td class=\"cell100 column1\">" << t.first << "</td>" << endl;
+			file << "<td class=\"cell100 column2\">" << get<0>(t.second) << "</td>" << endl;
+			file << "<td class=\"cell100 column3\">" << get<1>(t.second) << "</td>" << endl;
+			file << "<td class=\"cell100 column4\">" << get<2>(t.second) << "</td>" << endl;
+			file << "</tr>" << endl;
+		}
+		htmlEnd();
 	}
 }
 
-void WordCounter::addWord(string text) {
+void TextAnalizer::addWord(string text) {
   ++categorias[text];
 }
 
-void WordCounter::htmlStart(int i) {
+void TextAnalizer::htmlStart() {
   file << "<!DOCTYPE html><html lang=\"en\">" << endl;
   file << "<head>" << endl;
 	file << "<title>Categories</title>" <<endl;
@@ -72,10 +67,6 @@ void WordCounter::htmlStart(int i) {
   file << "<!--===============================================================================================-->" << endl;
   file << "</head>" << endl;
   file << "<body>" << endl;
-	tableStart(i);
-}
-
-void WordCounter::tableStart(int i) {
 	file << "<div class=\"limiter\">" << endl;
 	file << "<div class=\"container-table100\">" << endl;
 	file << "<div class=\"wrap-table100\">" << endl;
@@ -84,15 +75,8 @@ void WordCounter::tableStart(int i) {
 	file << "<table>" << endl;
 	file << "<thead>" << endl;
 	file << "<tr class=\"row100 head\">" << endl;
-	if (i==1) {
-		file << "<th class=\"cell100 column1\">Categorias</th>" << endl;
-		file << "<th class=\"cell100 column2\">Frequência</th>" << endl;
-	} else if (i==2) {
-		file << "<th class=\"cell100 column1\">Categoria</th>" << endl;
-		file << "<th class=\"cell100 column2\">Chave</th>" << endl;
-		file << "<th class=\"cell100 column3\">Autores</th>" << endl;
-		file << "<th class=\"cell100 column4\">Título</th>" << endl;
-	}
+	file << "<th class=\"cell100 column1\">Categorias</th>" << endl;
+	file << "<th class=\"cell100 column2\">Frequência</th>" << endl;
 	file << "</tr>" << endl;
 	file << "</thead>" << endl;
 	file << "</table>" << endl;
@@ -102,7 +86,7 @@ void WordCounter::tableStart(int i) {
 	file << "<tbody>" << endl;
 }
 
-void WordCounter::tableEnd() {
+void TextAnalizer::htmlMiddle() {
 	file << "</tbody>" << endl;
 	file << "</table>" << endl;
 	file << "</div>" << endl;
@@ -110,10 +94,34 @@ void WordCounter::tableEnd() {
 	file << "</div>" << endl;
 	file << "</div>" << endl;
 	file << "</div>" << endl;
+	file << "<div class=\"limiter\">" << endl;
+	file << "<div class=\"container-table100\">" << endl;
+	file << "<div class=\"wrap-table100\">" << endl;
+	file << "<div class=\"table100 ver1 m-b-110\">" << endl;
+	file << "<div class=\"table100-head\">" << endl;
+	file << "<table>" << endl;
+	file << "<thead>" << endl;
+	file << "<tr class=\"row100 head\">" << endl;
+	file << "<th class=\"cell100 column1\">Categoria</th>" << endl;
+	file << "<th class=\"cell100 column2\">Chave</th>" << endl;
+	file << "<th class=\"cell100 column3\">Autores</th>" << endl;
+	file << "<th class=\"cell100 column4\">Título</th>" << endl;
+	file << "</tr>" << endl;
+	file << "</thead>" << endl;
+	file << "</table>" << endl;
+	file << "</div>" << endl;
+  file << "<div class=\"table100-body js-pscroll\">" << endl;
+	file << "<table>" << endl;
+	file << "<tbody>" << endl;
 }
-
-void WordCounter::htmlEnd() {
-  tableEnd();
+void TextAnalizer::htmlEnd() {
+  file << "</tbody>" << endl;
+	file << "</table>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
+	file << "</div>" << endl;
   file << "<!--===============================================================================================-->	" << endl;
 	file << "<script src=\"../assets/vendor/jquery/jquery-3.2.1.min.js\"></script>" << endl;
   file << "<!--===============================================================================================-->" << endl;
