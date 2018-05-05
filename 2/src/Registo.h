@@ -16,10 +16,13 @@ class Registo{
         string autor;
         string titulo;
         string keyword;
-        int year;
+        string year;
 
     public:
         Registo();
-        Registo(string,string,string,int);
-        
+        Registo(string,string,string,string);
+        void setAutor(string);
+        void setYear(string);
+        void setKey(string);
+        void setTitulo(string);
 };

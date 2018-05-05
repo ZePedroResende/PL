@@ -10,27 +10,42 @@ vector<string> Authors::getAutores(){
 
 void Authors::addAutor(string a){
     autores.push_back(a);
-    autores.clear();
 }
 
 void Authors::addTitulo(string a){
     titulos.push_back(a);
-    titulos.clear();
 }
 
 void Authors::addKey(string a){
     keys.push_back(a);
-    keys.clear();
 }
 
 void Authors::addYear(string a){
     years.push_back(a);
-     for(int i=0; i<years.size(); i++){
-        cout << years.at(i) << endl;
+}
+
+void Authors::addRegisto(Registo* r){
+    for(string s: autores){
+        indice.insert(pair<string,Registo*>(s,r));
     }
-    years.clear();
 }
 
 void Authors::makeIndex(){
+    cout << "-------------- AUTORES ---------------" << endl;
+    for(int i=0; i<autores.size(); i++){
+        cout << autores.at(i) << endl;
+    }
+    cout << "----------- ANOS ---------------" << endl;
+    for(int i=0; i<years.size(); i++){
+        cout << years.at(i) << endl;
+    }
+    cout << "------------ KEYWORDS -------------" << endl;
+    for(int i=0; i<keys.size(); i++){
+        cout << keys.at(i) << endl;
+    }
+    cout << "--------------- TITLES ---------------" << endl;
+    for(int i=0; i<titulos.size(); i++){
+        cout << titulos.at(i) << endl;
+    }
     
 }

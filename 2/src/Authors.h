@@ -14,7 +14,7 @@ using namespace std;
 class Authors{
 
     private:
-        map<string,Registo> indice;
+        map<string,Registo*> indice;
         vector<string> autores;
         vector<string> titulos;
         vector<string> keys;
@@ -26,5 +26,6 @@ class Authors{
         void addTitulo(string);
         void addKey(string);
         void addYear(string);
+        void addRegisto(Registo*);
         void makeIndex();
 };
