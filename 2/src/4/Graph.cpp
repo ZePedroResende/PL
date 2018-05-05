@@ -58,13 +58,17 @@ void Graph::addColaborator(vector<string>& autores){
   }
 }
 
+bool Graph::isAuthor(string autor){
+  return !(colaboracao.find(autor) == colaboracao.end());
+}
+
 void Graph::printColaborator(string pessoa){
 
   auto lista = colaboracao[pessoa];
   for (auto it : lista) {
-    cout << setw(20) << pessoa <<
+    cout << setw(20) << "\"" <<pessoa << "\""<<
     setw(20) << "--" << setw(20)
-    << it.first << "[label=\""
+    << "\""<< it.first << "\"" << "[label=\""
     << it.second << "\","
     << "weight=\"" << it.second
     << "\"];" << endl;
@@ -78,6 +82,7 @@ void Graph::printRede(){
   for (auto it : colaboracao) {
     printColaborator(it.first);
   }
+  cout << "{rankdir=LR;}";
   cout<<"}"<< endl;
 }
 

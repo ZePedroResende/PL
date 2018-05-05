@@ -19,6 +19,8 @@ vector<string> getAuthors(string pessoas);
 
 void addCol(string pessoas);
 
+bool isAuthor(string autor);
+
 void addColaborator(vector<string>& autores);
 
 void printColaborator(string pessoa);
