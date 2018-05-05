@@ -32,7 +32,7 @@ ALL                [.\n]
 <dentro_categoria>[ \t]*\}          {cout<<"OUT"<<endl;BEGIN 0;}
 <dentro_categoria>.                 ;
 
-<processa_autor>[ \t]*{TITLE}             {BEGIN (processa_titulo); cout << "BEGIN TITULO!" << endl;}
+<processa_autor>^[ \t]*{TITLE}             {BEGIN (processa_titulo); cout << "BEGIN TITULO!" << endl;}
 <processa_autor>(.+)/([\"\}],)       {cout<<"AUTOR -->"<<yytext<<endl;}
 <processa_autor>\n                 ; 
 <processa_autor>.                 ;
