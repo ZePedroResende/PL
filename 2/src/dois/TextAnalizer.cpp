@@ -17,7 +17,7 @@ void TextAnalizer::printer() {
   }
   sort(catCount.begin(),catCount.end(), comparator);
 	if (!file.is_open()) {
-    cout << "Error while opening file 2.html" << endl;
+    cout << "Error while opening file 2.html!" << endl;
   } else {
   	htmlStart();
   	for(auto p: catCount) {
@@ -102,7 +102,7 @@ void TextAnalizer::htmlMiddle() {
 	file << "<div class=\"limiter\">" << endl;
 	file << "<div class=\"container-table100\">" << endl;
 	file << "<div class=\"wrap-table100\">" << endl;
-	file << "<div class=\"table100 ver1 m-b-110\">" << endl;
+	file << "<div class=\"table100 ver12 m-b-110\">" << endl;
 	file << "<div class=\"table100-head\">" << endl;
 	file << "<table>" << endl;
 	file << "<thead>" << endl;

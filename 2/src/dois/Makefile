@@ -20,13 +20,6 @@ dois: dois.l TextAnalizer.o
 	@rm lex.yy.cc TextAnalizer.o
 	@mv dois ../../build
 
-dois2: dois.2.l TextAnalizer.o
-	@mkdir -p ../../build
-	@flex --noyywrap dois.2.l
-	$(CXX) lex.yy.cc TextAnalizer.o -o dois2 $(CFLAGS)
-	@rm lex.yy.cc TextAnalizer.o
-
-
 TextAnalizer.o:
 	$(CXX) -c TextAnalizer.cpp -std=c++11
 
