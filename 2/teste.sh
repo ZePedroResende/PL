@@ -1,25 +1,25 @@
 #!/bin/bash
 if [ $# -ne 1 ]; then
-  echo "Usage: ./teste.sh [FILE TO TEST]"
+  echo -e "\033[0;31mUsage: ./teste.sh [FILE TO TEST]\033[0m"
   exit 0
 fi
 path="../../$1"
 make exec
 mkdir -p html
 ####################################################
-echo "Executing 1..."
+echo -e "\033[0;32mExecuting 1...\033[0m"
 cd src/um
 ../../build/um $path
 ####################################################
-echo "Executing 2..."
+echo -e "\033[0;32mExecuting 2...\033[0m"
 cd ../dois
 ../../build/dois $path
 ####################################################
-echo "Executing 3..."
+echo -e "\033[0;32mExecuting 3...\033[0m"
 # cd ../tres
 # 3 here
 ####################################################
-echo "Executing 4..."
+echo -e "\033[0;32mExecuting 4...\033[0m"
 cd ../quatro
 ../../build/quatro  $path "J\.J\.Almeida" > exemploAutor.dot
 ../../build/quatro  $path > exemploGlobal.dot
