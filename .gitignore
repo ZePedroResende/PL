@@ -1,5 +1,7 @@
 1/files
 2/assets
+2/build
+2/html
 
 *.txt
 *.swp

@@ -1,4 +1,4 @@
-all: 
+all: clean
 	@mkdir -p build/
 	$(MAKE) -C src/um
 	$(MAKE) -C src/dois
@@ -15,5 +15,6 @@ exec:
 	$(MAKE) -C src/dois
 
 clean:
-	@rm -rf build/ assets/ 0.1.tar.gz
-	$(MAKE) -C src/ clean	
+	@rm -rf build/ assets/ 0.1.tar.gz html/
+	$(MAKE) -C src/um clean	
+	$(MAKE) -C src/dois clean
