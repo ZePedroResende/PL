@@ -40,10 +40,12 @@ void TextAnalizer::printer() {
 }
 
 void TextAnalizer::addWord(string text) {
+  transform(text.begin(), text.end(), text.begin(), ::tolower);
   ++categorias[text];
 }
 
 void TextAnalizer::addInfo(string code,string category,string title,string author) {
+	transform(category.begin(), category.end(), category.begin(), ::tolower);
 	tuple<string,string,string> info = make_tuple(category, author, title);
 	catInfo[code] = info;
 }
