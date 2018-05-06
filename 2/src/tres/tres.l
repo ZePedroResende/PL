@@ -16,9 +16,9 @@ Registo* regs = new Registo();
 
 %}
 
-%x CATEGORY AUTHOR TITLE YEAR KEYWORD
+%x AUTHOR YEAR TITLE KEYWORD
 
-NOME ([a-zA-Z]|á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô|Õ|Ú|Ç|:|,|[0-9])
+NOME ([a-zA-Z]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ]|[\:\,\.]|[0-9])
 YEAR [yY][eE][aA][rR]
 AUTOR [aA][uU][tT][hH][oO][rR]
 TITLE [tT][iI][tT][lL][eE]
@@ -46,7 +46,7 @@ STRING [A-Za-z]
                                         }
                                         BEGIN AUTHOR;}
 
-<AUTHOR>[\"\}],                         {auth->addAutor(autor); 
+<AUTHOR>[\"\}],                         {auth->addAutor(autor);
                                         autor.clear();  
                                         BEGIN 0;
                                         }
@@ -57,19 +57,7 @@ STRING [A-Za-z]
                                         autor.clear();
                                         }
 
-<AUTHOR>({NOME}|\.)+                    {autor = autor + yytext;}
-
-{KEYWORD}[\ \t]*=[\ \t]*[\{\"]          {BEGIN KEYWORD;}
-
-<KEYWORD>[\"\}]                         {regs->setKey(keyword);
-                                        auth->addKey(keyword);
-                                        keyword.clear();                                     
-                                        BEGIN 0;
-                                        }
-
-<KEYWORD>\n|\"|\{|\}|\+|\=|\.|\?|\\|\$  ;
-
-<KEYWORD>{NOME}+                        {keyword = keyword + yytext;}
+<AUTHOR>{NOME}                          {autor = autor + yytext;}
 
 [\ \t]+{TITLE}[\ \t]*=[\ \t]*[\{\"]+    {BEGIN TITLE;}
 
@@ -84,7 +72,7 @@ STRING [A-Za-z]
 <TITLE>({NOME}|\-|\ |\:|\,|\'|\\|\#|\=)+     {titulo = titulo + yytext;}
 
 
-.|\n                                                    ;
+.|\n                               
 
 %%
 int main(int argc, char *argv[]) {
