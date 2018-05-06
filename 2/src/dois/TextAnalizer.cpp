@@ -45,6 +45,7 @@ void TextAnalizer::addWord(string text) {
 }
 
 void TextAnalizer::addInfo(string code,string category,string title,string author) {
+	transform(category.begin(), category.end(), category.begin(), ::tolower);
 	tuple<string,string,string> info = make_tuple(category, author, title);
 	catInfo[code] = info;
 }
