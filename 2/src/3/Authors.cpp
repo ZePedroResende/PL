@@ -50,12 +50,12 @@ void Authors::addRegisto(){
 }
 
 void htmlStart(){
-    "index.html" < "<!DOCTYPE html><html lang=\"en\">\n"
-    "index.html" << "<head>" << endl;
-	"index.html" << "<title>Índice</title>" <<endl;
-	"index.html" << "<title>Índice</title>" <<endl;
-	"index.html" << "<title>Índice</title>" <<endl;
-	"index.html" << "<title>Índice</title>" <<endl;
+    cout << "<!DOCTYPE html><html lang=\"en\">" << endl;
+    cout << "<head>" << endl;
+	cout << "<title>Índice</title>" <<endl;
+	cout << "<title>Índice</title>" <<endl;
+	cout << "<title>Índice</title>" <<endl;
+	cout << "<title>Índice</title>" <<endl;
 	cout << "<meta charset=\"UTF-8\">" <<endl;
 	cout << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" <<endl;
     cout << "<!--===============================================================================================-->	" <<endl;
