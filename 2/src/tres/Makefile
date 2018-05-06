@@ -26,6 +26,6 @@ Registo.o:
 	$(CXX) -c Registo.cpp -std=c++11
 
 clean:
-	@rm -rf tres lex.yy.cc *.o 2>/dev/null || true
+	@rm -rf lex.yy.cc *.o 2>/dev/null || true
 
 

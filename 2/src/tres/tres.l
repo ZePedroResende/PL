@@ -77,8 +77,37 @@ STRING [A-Za-z]
 %%
 int main(int argc, char *argv[]) {
   FlexLexer* lexer = new yyFlexLexer;
-  while(lexer->yylex() != 0);
-  if(argc < 2) cout << "Autor em falta -> Por favor indique o autor a consultar :D" << endl;
-  auth->makeIndex(argv[1]);
+  switch(argc){
+    case 1:
+      {
+       cout << "Autor em falta -> Por favor indique o autor a consultar :D" << endl;
+       break;
+      }
+    case 2:
+      {
+        while(lexer->yylex() != 0);
+        auth->makeIndex(argv[1]);
+        break;
+      }
+    case 3:
+      {
+        ifstream infile(argv[2]);
+        if (infile){
+          lexer->switch_streams(&infile,&cout);
+          while(lexer->yylex() != 0);
+          auth->makeIndex(argv[1]);
+        }
+        else{
+          cout << "cant open file" << endl;
+        }
+        break;
+      }
+    default:
+      {
+        cout << "Wrong args" << endl;
+        break;
+      }
+    }
   return 0;
 }
+

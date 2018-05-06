@@ -4,7 +4,6 @@ if [ $# -ne 1 ]; then
   exit 0
 fi
 path="../../$1"
-make exec
 mkdir -p html
 ####################################################
 echo -e "\033[0;32mExecuting 1...\033[0m"
@@ -16,8 +15,8 @@ cd ../dois
 ../../build/dois $path
 ####################################################
 echo -e "\033[0;32mExecuting 3...\033[0m"
-# cd ../tres
-# 3 here
+cd ../tres
+../../build/tres "PedroRangelHenriques" $path
 ####################################################
 echo -e "\033[0;32mExecuting 4...\033[0m"
 cd ../quatro
