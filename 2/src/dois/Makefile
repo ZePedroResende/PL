@@ -24,6 +24,6 @@ TextAnalizer.o:
 	$(CXX) -c TextAnalizer.cpp -std=c++11
 
 clean:
-	@rm -rf um lex.yy.cc *.o 2>/dev/null || true
+	@rm -rf lex.yy.cc *.o 2>/dev/null || true
 
 

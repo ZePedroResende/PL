@@ -14,13 +14,14 @@ endif
 
 
 quatro: quatro.l Graph.o
+	@mkdir -p ../../build
 	@flex --noyywrap quatro.l
 	$(CXX) lex.yy.cc Graph.o -o quatro $(CFLAGS)
 	@rm lex.yy.cc Graph.o
-	@mv quatro ../build
+	@mv quatro ../../build
 
 Graph.o:
 	$(CXX) -c Graph.cpp -std=c++11
 
 clean:
-	@rm -rf quatro lex.yy.cc *.o *.ps *.dot 2>/dev/null || true
+	@rm -rf lex.yy.cc *.o *.ps *.dot 2>/dev/null || true

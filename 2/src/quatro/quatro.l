@@ -12,16 +12,23 @@ autor (author|AUTHOR)([ \n\t]+)?=([ \n\t]+)?
 NOME ([a-zA-Z]|á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô|Õ|Ú|Ç)
 
 %%
-[ \n\t]                                                ;
-<*>{autor}                                             BEGIN AUTHOR;
-<AUTHOR>[{"]                                           ;
-<AUTHOR>([ \n\t]+)and([ \n\t]*)(and)?                  { names.push_back(name); name.clear(); }
-<AUTHOR>\.                                        { name.append("\\"); name.append(yytext); }
-<AUTHOR>[\n\t]                                         ;
-<AUTHOR>{NOME}                                         { name.append(yytext);}
-<AUTHOR>([ \n\t]*)?[}"]([ \n\t]*)?,                    { names.push_back(name); name.clear(); g->addColaborator(names); names.clear();BEGIN INITIAL;}
-<AUTHOR>.                                              ;
-.                                                      ;
+[ \n\t]                                   ;
+<*>{autor}                                BEGIN AUTHOR;
+.                                         ;
+
+<AUTHOR>[{"]                              ;
+<AUTHOR>([ \n\t]+)and([ \n\t]*)(and)?     { names.push_back(name);
+                                            name.clear();}
+<AUTHOR>\.                                { name.append("\\"); 
+                                            name.append(yytext);}
+<AUTHOR>[\n\t]                            ;
+<AUTHOR>{NOME}                            { name.append(yytext);}
+<AUTHOR>([ \n\t]*)?[}"]([ \n\t]*)?,       { names.push_back(name); 
+                                            name.clear(); 
+                                            g->addColaborator(names);
+                                            names.clear();
+                                            BEGIN INITIAL;}
+<AUTHOR>.                                 ;
 %%
 int main(int argc, char *argv[]) {
   FlexLexer* lexer = new yyFlexLexer;
@@ -37,7 +44,7 @@ int main(int argc, char *argv[]) {
         cout << argv[1] << endl;
         ifstream infile(argv[1]);
         if (infile){
-          lexer->switch_streams(infile,cout);
+          lexer->switch_streams(&infile,&cout);
           while(lexer->yylex() != 0);
           g->printRede();
         }
@@ -50,7 +57,7 @@ int main(int argc, char *argv[]) {
       {
         ifstream infile(argv[1]);
         if (infile){
-          lexer->switch_streams(infile,cout);
+          lexer->switch_streams(&infile,&cout);
           while(lexer->yylex() != 0);
           if (g->isAuthor(argv[2])){
             g->printStartGraph();
