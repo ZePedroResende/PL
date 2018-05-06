@@ -60,7 +60,6 @@ int main(int argc, char *argv[]) {
       }
     case 2:
       {
-        cout << argv[1] << endl;
         ifstream infile(argv[1]);
         if (infile){
           lexer->switch_streams(&infile,&cout);

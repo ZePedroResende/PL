@@ -10,7 +10,7 @@ STRING             [a-zA-Z]
 %%
 
 [ \n\t]                 ;
-\@{STRING}+\{           {yytext[yyleng-1]='\0';yytext=yytext+1;wc->addWord(yytext);}
+\@{STRING}+/(\{)        {yytext=yytext+1;wc->addWord(yytext);}
 .                       ;
 
 %%
@@ -26,7 +26,6 @@ int main(int argc, char *argv[]) {
       }
     case 2:
       {
-        cout << argv[1] << endl;
         ifstream infile(argv[1]);
         if (infile){
           lexer->switch_streams(&infile,&cout);
