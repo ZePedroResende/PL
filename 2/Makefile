@@ -31,7 +31,7 @@ exec:
 
 clean:
 	@echo "\033[0;31mCleaning...\033[0m"
-	@rm -rf build/ assets/ 0.1.tar.gz html/ >/dev/null 2>&1
+	@rm -rf build/ assets/ 0.2.tar.gz html/ >/dev/null 2>&1
 	@$(MAKE) -C src/um clean	>/dev/null 2>&1
 	@$(MAKE) -C src/dois clean >/dev/null 2>&1
 	@$(MAKE) -C src/tres clean >/dev/null 2>&1
