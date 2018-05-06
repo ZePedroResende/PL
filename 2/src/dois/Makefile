@@ -13,22 +13,22 @@ else
 endif
 
 
-dois: dois.l WordCounter.o
+dois: dois.l TextAnalizer.o
 	@mkdir -p ../../build
 	@flex --noyywrap dois.l
-	$(CXX) lex.yy.cc WordCounter.o -o dois $(CFLAGS)
-	@rm lex.yy.cc WordCounter.o
+	$(CXX) lex.yy.cc TextAnalizer.o -o dois $(CFLAGS)
+	@rm lex.yy.cc TextAnalizer.o
 	@mv dois ../../build
 
-dois2: dois.2.l WordCounter.o
+dois2: dois.2.l TextAnalizer.o
 	@mkdir -p ../../build
 	@flex --noyywrap dois.2.l
-	$(CXX) lex.yy.cc WordCounter.o -o dois2 $(CFLAGS)
-	@rm lex.yy.cc WordCounter.o
+	$(CXX) lex.yy.cc TextAnalizer.o -o dois2 $(CFLAGS)
+	@rm lex.yy.cc TextAnalizer.o
 
 
-WordCounter.o:
-	$(CXX) -c WordCounter.cpp -std=c++11
+TextAnalizer.o:
+	$(CXX) -c TextAnalizer.cpp -std=c++11
 
 clean:
 	@rm -rf um lex.yy.cc *.o 2>/dev/null || true

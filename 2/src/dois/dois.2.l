@@ -6,7 +6,10 @@
 %{
 #include "words.h"
 TextAnalizer *ta = new TextAnalizer();
-string title = "";
+string cat = ""; 
+string tit = "";
+string aut ="";
+string cod="";
 int i=0;
 %}
 
@@ -22,30 +25,35 @@ ALL                [.\n]
 \@{STRING}+\{          {yytext[yyleng-1]='\0';
                         yytext=yytext+1;
                         ta->addWord(yytext);
-                        printf("BEGIN dentro_categoria --> %s\n", yytext);
+                        cat = yytext;
                         BEGIN(dentro_categoria);}
 .                       ;
 
 <dentro_categoria>\n                     ;
-<dentro_categoria>[[:alnum:]]+[ \t]*\,   {yytext[yyleng-1]='\0';cout<< "Código: "<< yytext<<endl;}
-<dentro_categoria>{TITLE}                         {BEGIN (titulo);}
-<dentro_categoria>{AUTHOR}                        {BEGIN (autor);}
-<dentro_categoria>([ \t]*)\}([ \t]*)\n                      {cout<<"OUT!"<< endl;BEGIN 0;}
-<dentro_categoria>.                  ;
+<dentro_categoria>[[:alnum:]]+[ \t]*\,   {yytext[yyleng-1]='\0';
+                                          cod = yytext;}
+<dentro_categoria>{TITLE}                {BEGIN (titulo);}
+<dentro_categoria>{AUTHOR}               {BEGIN (autor);}
+<dentro_categoria>([ \t]*)\}([ \t]*)\n   {BEGIN 0;}
+<dentro_categoria>.                      ;
 
 <autor>\n                 putchar(' ');
-<autor>(.+)/([\"\}],)     {cout << "AUTOR -->"<< yytext <<endl; BEGIN (dentro_categoria);}
+<autor>(.+)/([\"\}],)     {aut = yytext;
+                           BEGIN (dentro_categoria);}
 <autor>.                  ;
 
-<titulo>\n                 putchar(' ');
-<titulo>(.+)/([\"\}],)     {cout << "TITULO -->"<< yytext <<endl; BEGIN 0;}
-<titulo>.                  ;
+<titulo>\n                putchar(' ');
+<titulo>(.+)/([\"\}],)    {tit = yytext;
+                           ta -> addInfo(cod,cat,tit,aut);
+                           tit.empty();cod.empty();cat.empty();aut.empty();
+                           BEGIN 0;}
+<titulo>.                 ;
 
 %%
 int main(int argc, char *argv[]) {
 
   FlexLexer* lexer = new yyFlexLexer;
   while(lexer->yylex() != 0);
-  //ta->printer();
+  ta->printer();
   return 0;
 }

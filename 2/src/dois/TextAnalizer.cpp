@@ -1,7 +1,7 @@
 #include "words.h"
 
 TextAnalizer::TextAnalizer(){
-
+	
 }
 
 bool TextAnalizer::comparator(pair<int, string> left, pair<int, string> right) {
@@ -29,10 +29,10 @@ void TextAnalizer::printer() {
 		htmlMiddle();
 		for (auto &t: catInfo) {
 			file << "<tr class=\"row100 body\">" << endl;
-			file << "<td class=\"cell100 column1\">" << t.first << "</td>" << endl;
-			file << "<td class=\"cell100 column2\">" << get<0>(t.second) << "</td>" << endl;
-			file << "<td class=\"cell100 column3\">" << get<1>(t.second) << "</td>" << endl;
-			file << "<td class=\"cell100 column4\">" << get<2>(t.second) << "</td>" << endl;
+			file << "<td class=\"cell100 column1\">" << get<2>(t.second) << "</td>" << endl;
+			file << "<td class=\"cell100 column2\">" << get<1>(t.second) << "</td>" << endl;
+			file << "<td class=\"cell100 column3\">" << get<0>(t.second) << "</td>" << endl;
+			file << "<td class=\"cell100 column4\">" << t.first << "</td>" << endl;
 			file << "</tr>" << endl;
 		}
 		htmlEnd();
@@ -41,6 +41,11 @@ void TextAnalizer::printer() {
 
 void TextAnalizer::addWord(string text) {
   ++categorias[text];
+}
+
+void TextAnalizer::addInfo(string code,string category,string title,string author) {
+	tuple<string,string,string> info = make_tuple(category, author, title);
+	catInfo[code] = info;
 }
 
 void TextAnalizer::htmlStart() {
@@ -102,10 +107,10 @@ void TextAnalizer::htmlMiddle() {
 	file << "<table>" << endl;
 	file << "<thead>" << endl;
 	file << "<tr class=\"row100 head\">" << endl;
-	file << "<th class=\"cell100 column1\">Categoria</th>" << endl;
-	file << "<th class=\"cell100 column2\">Chave</th>" << endl;
-	file << "<th class=\"cell100 column3\">Autores</th>" << endl;
-	file << "<th class=\"cell100 column4\">Título</th>" << endl;
+	file << "<th class=\"cell100 column1\">Título</th>" << endl;	
+	file << "<th class=\"cell100 column2\">Autores</th>" << endl;
+	file << "<th class=\"cell100 column3\">Categoria</th>" << endl;	
+	file << "<th class=\"cell100 column4\">Chave</th>" << endl;
 	file << "</tr>" << endl;
 	file << "</thead>" << endl;
 	file << "</table>" << endl;

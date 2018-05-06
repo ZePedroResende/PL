@@ -26,4 +26,5 @@ class TextAnalizer {
     void printer();
     static bool comparator(pair<int, string>, pair<int, string>);
     void addWord(string);
+    void addInfo(string,string,string,string);
 };
