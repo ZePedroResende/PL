@@ -1,3 +1,5 @@
+#!/bin/bash
 make clean
 make dois
-./dois ../../files/exemplo-latin1.bib
+mkdir -p ../../html
+../../build/dois ../../files/exemplo-latin1.bib

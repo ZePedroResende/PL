@@ -24,6 +24,6 @@ WordCounter.o:
 	$(CXX) -c WordCounter.cpp -std=c++11
 
 clean:
-	@rm -rf um lex.yy.cc *.o 2>/dev/null || true
+	@rm -rf lex.yy.cc *.o 2>/dev/null || true
 
 
