@@ -18,7 +18,7 @@ Registo* regs = new Registo();
 
 %x CATEGORY AUTHOR TITLE YEAR KEYWORD
 
-NOME ([a-zA-Z]|\á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô|Õ|Ú|Ç|:|,|[0-9])
+NOME ([a-zA-Z]|á|à|â|ã|é|è|ê|í|ó|ô|ú|ç|ñ|Á|À|Â|Ã|É|È|Í|Ó|Ô|Õ|Ú|Ç|:|,|[0-9])
 YEAR [yY][eE][aA][rR]
 AUTOR [aA][uU][tT][hH][oO][rR]
 TITLE [tT][iI][tT][lL][eE]
@@ -29,6 +29,7 @@ STRING [A-Za-z]
 {YEAR}[\ \t]*=[\ \t]*[\{\"]*            {BEGIN YEAR;}
 
 <YEAR>(\})?(,)?                         {regs->setYear(year); 
+                                        auth->addYear(year);
                                          year.clear();
                                          BEGIN 0;
                                          }
@@ -39,7 +40,7 @@ STRING [A-Za-z]
 
 {AUTOR}[\ \t]*=[\ \t]*[\{\"]+           {findN++; 
                                         if(findN==2){
-                                          auth->addRegisto(regs);
+                                          auth->addRegisto();
                                           regs = new Registo();
                                           findN = 0;
                                         }
@@ -60,7 +61,8 @@ STRING [A-Za-z]
 
 {KEYWORD}[\ \t]*=[\ \t]*[\{\"]          {BEGIN KEYWORD;}
 
-<KEYWORD>[\"\}]                         {regs->setKey(keyword); 
+<KEYWORD>[\"\}]                         {regs->setKey(keyword);
+                                        auth->addKey(keyword);
                                         keyword.clear();                                     
                                         BEGIN 0;
                                         }
@@ -71,7 +73,8 @@ STRING [A-Za-z]
 
 [\ \t]+{TITLE}[\ \t]*=[\ \t]*[\{\"]+    {BEGIN TITLE;}
 
-<TITLE>[\"\}],                          {regs->setTitulo(titulo); 
+<TITLE>[\"\}],                          {regs->setTitulo(titulo);
+                                        auth->addTitulo(titulo);
                                         titulo.clear();
                                         BEGIN 0;
                                         }

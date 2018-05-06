@@ -13,19 +13,16 @@ using namespace std;
 class Registo{
 
     private:
-        string autor;
         string titulo;
         string keyword;
         string year;
 
     public:
         Registo();
-        Registo(string,string,string,string);
-        void setAutor(string);
+        Registo(string,string,string);
         void setYear(string);
         void setKey(string);
         void setTitulo(string);
-        string getAutor();
         string getYear();
         string getKey();
         string getTitulo();

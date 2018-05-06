@@ -4,15 +4,10 @@ Registo::Registo(){
 
 }
 
-Registo::Registo(string a, string t, string p, string y){
+Registo::Registo(string t, string k, string y){
     titulo = t;
-    autor = a;
-    keyword = p;
+    keyword = k;
     year = y;
-}
-
-void Registo::setAutor(string a){
-    autor = a;
 }
 
 void Registo::setYear(string ano){
@@ -25,10 +20,6 @@ void Registo::setKey(string k){
 
 void Registo::setTitulo(string t){
     titulo = t;
-}
-
-string Registo::getAutor(){
-    return autor;
 }
 
 string Registo::getYear(){
