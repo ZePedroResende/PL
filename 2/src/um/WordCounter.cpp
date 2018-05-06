@@ -37,7 +37,7 @@ void WordCounter::addWord(string text) {
 void WordCounter::htmlStart() {
   file << "<!DOCTYPE html><html lang=\"en\">" << endl;
   file << "<head>" << endl;
-	file << "<title>Categories</title>" <<endl;
+	file << "<title>Categorias</title>" <<endl;
 	file << "<meta charset=\"UTF-8\">" <<endl;
 	file << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" <<endl;
   file << "<!--===============================================================================================-->	" <<endl;

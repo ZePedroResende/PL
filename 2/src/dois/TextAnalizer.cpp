@@ -51,7 +51,7 @@ void TextAnalizer::addInfo(string code,string category,string title,string autho
 void TextAnalizer::htmlStart() {
   file << "<!DOCTYPE html><html lang=\"en\">" << endl;
   file << "<head>" << endl;
-	file << "<title>Categories</title>" <<endl;
+	file << "<title>Categorias e Associações</title>" <<endl;
 	file << "<meta charset=\"UTF-8\">" <<endl;
 	file << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" <<endl;
   file << "<!--===============================================================================================-->	" <<endl;
