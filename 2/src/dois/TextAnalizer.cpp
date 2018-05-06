@@ -40,6 +40,7 @@ void TextAnalizer::printer() {
 }
 
 void TextAnalizer::addWord(string text) {
+  transform(text.begin(), text.end(), text.begin(), ::tolower);
   ++categorias[text];
 }
 
