@@ -13,14 +13,17 @@ else
 endif
 
 
-quatro: quatro.l Graph.o
-	@flex --noyywrap quatro.l
-	$(CXX) lex.yy.cc Graph.o -o quatro $(CFLAGS)
-	@rm lex.yy.cc Graph.o
-	@mv quatro ../build
+um: um.l WordCounter.o
+	@mkdir -p ../../build
+	@flex --noyywrap um.l
+	$(CXX) lex.yy.cc WordCounter.o -o um $(CFLAGS)
+	@rm lex.yy.cc WordCounter.o
+	@mv um ../../build
 
-Graph.o:
-	$(CXX) -c Graph.cpp -std=c++11
+WordCounter.o:
+	$(CXX) -c WordCounter.cpp -std=c++11
 
 clean:
-	@rm -rf quatro lex.yy.cc *.o *.ps *.dot 2>/dev/null || true
+	@rm -rf lex.yy.cc *.o 2>/dev/null || true
+
+

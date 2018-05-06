@@ -1,5 +1,8 @@
 1/files
 2/assets
+2/build
+2/html
+.vscode/
 
 *.txt
 *.swp
@@ -7,7 +10,6 @@
 *~
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
-
 
 # Prerequisites
 *.d
