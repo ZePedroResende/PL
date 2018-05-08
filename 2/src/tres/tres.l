@@ -53,9 +53,10 @@ STRING [A-Za-z]
 
 <AUTHOR>\ |\\|\n|\{|\}|\(|\)            ;
 
-<AUTHOR>(and[\ \n]*)+                   {auth->addAutor(autor); 
+<AUTHOR>(\ )+(and[\ \n]*)+                   {auth->addAutor(autor); 
                                         autor.clear();
                                         }
+
 
 <AUTHOR>{NOME}                          {autor = autor + yytext;}
 
@@ -66,6 +67,8 @@ STRING [A-Za-z]
                                         titulo.clear();
                                         BEGIN 0;
                                         }
+
+<TITLE>\\(.+)\{                         ;                                  
 
 <TITLE>\n|\"|\{|\}|\\                   ;
 
