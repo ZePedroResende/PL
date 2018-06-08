@@ -12,7 +12,6 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-]|\ )
                                                return yytext;
                                                BEGIN (word);}
 
-
 <word>\}                                      {BEGIN 0;
                                                }
 
