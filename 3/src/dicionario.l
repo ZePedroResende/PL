@@ -1,7 +1,6 @@
 %x mean syn english word
 
 %{
-#include "linkedhash.h"
 #include <stdio.h>
 char* mean, syn, english, w;
 %}
@@ -13,8 +12,8 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-]|\ )
                                                return yytext;
                                                BEGIN (word);}
 
-<word>\}                                      {printf("\n"); 
-                                               BEGIN 0;
+
+<word>\}                                      {BEGIN 0;
                                                }
 
 <word>\n                                      ;
