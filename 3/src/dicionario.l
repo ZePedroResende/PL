@@ -1,7 +1,6 @@
 %x mean syn english word
 
 %{
-#include "linkedhash.h"
 #include <stdio.h>
 char* mean, syn, english, w;
 %}
