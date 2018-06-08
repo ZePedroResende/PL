@@ -5,11 +5,12 @@
 char* mean, syn, english, w;
 %}
 
-STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-]|\ )
+STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
 %%
-{STRING}+\{                                   {yytext[yyleng-1]='\0'; 
-                                               return yytext;
+{STRING}+\{                                   {yytext[yyleng-1]='\0';
+                                               yylval.texto = strdup(yytext);
+                                               return w;
                                                BEGIN (word);}
 
 <word>\}                                      {BEGIN 0;
@@ -23,7 +24,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-]|\ )
 
 <mean>\n                                      ;
 
-<mean>{STRING}+                               {return yytext;}
+<mean>{STRING}+                               {yylval.texto = strdup(yytext); return MEAN;}
 
 <word>[\ \t]*syn:[\ \t]*\"                    {BEGIN (syn);}
 
@@ -31,7 +32,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-]|\ )
 
 <syn>\n                                       ;
 
-<syn>{STRING}+                                {return yytext;}
+<syn>{STRING}+                                {yylval.texto = strdup(yytext); return SYN;}
 
 <word>[\ \t]*english:[\ \t]*\"                {BEGIN (english);}
 
@@ -39,7 +40,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-]|\ )
 
 <english>\n                                   ;
 
-<english>{STRING}+                            {return yytext;}
+<english>{STRING}+                            {yylval.texto = strdup(yytext); return ENGLISH;}
 
 .|\n                                          ;
 %%
