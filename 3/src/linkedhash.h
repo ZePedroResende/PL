@@ -19,4 +19,4 @@ struct nlist *lookup(char *s);
 /* install: put (name, defn) in hashtab */
 struct nlist *install(char *name, char *defn);
 
-char *strdup(char *s); /* make a duplicate of s */
+char *strdupl(char *s); /* make a duplicate of s */
