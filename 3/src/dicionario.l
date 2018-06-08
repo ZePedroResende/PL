@@ -12,8 +12,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-]|\ )
                                                return yytext;
                                                BEGIN (word);}
 
-<word>\}                                      {printf("\n"); 
-                                               BEGIN 0;
+<word>\}                                      {BEGIN 0;
                                                }
 
 <word>\n                                      ;
