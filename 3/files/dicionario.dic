@@ -1,0 +1,199 @@
+ato{
+    mean: "divisao principal dentro do enredo de um filme"
+    syn: "ação"
+    syn: "facto"
+    syn: "decreto"
+    english: "act"
+}
+ator{
+    mean: "refere-se tanto a um artista masculino como feminino a desnrolar um papel num filme"
+    syn: "artista"
+    syn: "executante"
+    syn: "figurante"
+    english: "actor"
+}
+ambiente{
+    mean: "a sensação de uma cena particular"
+    syn: "cenário"
+    syn: "enredo"
+    english: "ambiance"
+}
+angulo{
+    mean: "refere-se a uma perspetiva em que a câmera retrata o sujeito"
+    syn: "ponto de vista"
+    syn: "fase"
+    english: "angle"
+}
+audio{
+    mean: "refere-se a uma porção do som de um filme"
+    syn: "som"
+    syn: "tom"
+    english: "audio"
+}
+pano de fundo{
+    mean: "refere-se a uma grande parte do suporte fotográfico de um fundo de uma cena de um filme"
+    syn: "cortina de fundo"
+    english: "backdrop"
+}
+batida{
+    mean: "termo de um ator para saber quanto tempo esperar antes de passar à ação"
+    syn: "bater"
+    syn: "ronda"
+    syn: "pêndulo"
+    syn: "aceno"
+    english: "beat"
+}
+erro{
+    mean: "erro embaraçoso feito por um artista durante o filme"
+    syn: "falha"
+    syn: "defeito"
+    english: "blooper"
+}
+sinopse{
+    mean: "termo para descrever uma propaganda"
+    syn: "dizeres de propaganda"
+    english: "blurb"
+}
+zunir{
+    mean: "calão para a sensação de excitação, expectativa que rodeia um filme, ator ou diretor"
+    syn: "zumbido"
+    syn: "isca artificial"
+    syn: "murmúrio"
+    english: "buzz"
+}
+camera{
+    mean: "máquina básica envolvida na produção de um filme, desde fixas até portáteis"
+    syn: "máquina fotografica"
+    english: "camera"
+}
+casting{
+    mean: "processo de escolha dos atores para a realização de um filme"
+    syn: "funcição"
+    syn: "moldagem"
+    english: "casting"
+}
+catarse{
+    mean: "experiência de tensão emocional, providenciando alívio ou restauração terapêutica"
+    syn: "purga"
+    syn: "purificação"
+    english: "catharsis"
+}
+censura{
+    mean: "processo que determina o que pode e o que não pode ser visto pelo público"
+    syn: "cardo de censor"
+    english: "censorship"
+}
+quimica{
+    mean: "performance entre artistas que se complementam um ao outro"
+    syn: "clima"
+    syn: "ligação entre artistas"
+    english: "chemistry"
+}
+climax{
+    mean: "o ponto mais alto de tensão de uma determinada história de um filme"
+    syn: "apogeu"
+    syn: "cume"
+    english: "climax"
+}
+comediante{
+    mean: "actor especialista em filmes do gênero de humor"
+    syn: "humorista"
+    english: "comedian"
+}
+comentário{
+    mean: "opinião objetiva ou desrição de personagens ou eventos ocorridos no filme"
+    syn: "nota"
+    english: "commentary"
+}
+complicação{
+    mean: "evento que complica a tensão do filme"
+    syn: "embaraço"
+    syn: "constrangimento"
+    english: "complication"
+}
+compositor{
+    mean: "músico que cria a banda sonora do filme"
+    syn: "autor"
+    english: "composer"
+}
+composição{
+    mean: "arranjo de diferentes elementos, cores, formas, figuras, linha, movimento ou luz"
+    syn: "estrutura"
+    syn: "montagem"
+    syn: "harmonização"
+    syn: "arranjo artístico"
+    english: "composition"
+}
+convenções{
+    mean: "elementos esperados num tipo de filme, sem questão, pensamento ou julgamento"
+    syn: "acordos"
+    syn: "assembléia"
+    english: "conventions"
+}
+crédito{
+    mean: "termo que se refere à aparição de texto no ecrã, composto por uma lista de pessoal técnico"
+    syn: "honra"
+    english: "credit"
+}
+equipa{
+    mean: "aqueles envolvidos na produção técnica de um filme que não as personagens"
+    syn: "horda"
+    english: "crew"
+}
+sugestão{
+    mean: "sinal para um ator começar a atuar"
+    syn: "ordem"
+    syn: "deixa"
+    syn: "palpite"
+    english: "cue"
+}
+impassível{
+    mean: "tipo específico de dispositivo cómico em que o artista assume qualidade sem expressão na sua cara, demonstrando absolutamente nenhuma emoção ou sentimento."
+    syn: "sem expressão"
+    english: "deadpan"
+}
+desfecho{
+    mean: "ponto imediatamente a seguir ao climax, quando tudo se resolve, muitas vezes na última cena"
+    syn: "desenredo"
+    syn: "desenlace final"
+    english: "denouement"
+}
+diálogo{
+    mean: "quaisquer linhas faladas num filme por atores"
+    syn: "conversa"
+    english: "dialogue"
+}
+produção digital{
+    mean: "refere-se à realização de um filme em vídeo digital usando câmeras com alta resolução"
+    syn: "realização digital"
+    english: "digital production"
+}
+diretor{
+    mean: "artista responsável por completar controlo artístico de todas as fases da produção de um filme"
+    syn: "realizador"
+    syn: "administrador"
+    english: "director"
+}
+epílogo{
+    mean: "curta, conclusiva cena num filme em que as personagens refletem em eventos precedidos"
+    syn: "momento de reflexão"
+    english: "epilogue"
+}
+exposição{
+    mean: "transporte de informação de fundo importante para os eventos de uma história"
+    syn: "explicação"
+    english: "exposition"
+}
+flashback{
+    mean: "técnica que altera a ordem natural da narração"
+    syn: "lembrança"
+    syn: "recordação"
+    english: "flashback"
+}
+frame{
+    mean: "refere-se a uma única imagem, a unidade mais pequena de composição da estrutura de um filme, capturada pela câmera numa faixa de movimento"
+    syn: "quadro"
+    syn: "moldura"
+    english: "frame"
+}
+
