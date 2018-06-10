@@ -2,15 +2,16 @@
 
 %{
 #include <stdio.h>
-char* mean, syn, english, w;
+#include "y.tab.h"
 %}
 
 STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
+%option noyywrap
 %%
 {STRING}+\{                                   {yytext[yyleng-1]='\0';
                                                yylval.texto = strdup(yytext);
-                                               return w;
+                                               return WORD;
                                                BEGIN (word);}
 
 <word>\}                                      {BEGIN 0;
@@ -44,11 +45,6 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
 .|\n                                          ;
 %%
-
-int yywrap(){
-	return 1;
-}
-
 /*int main(int argc, char *argv[]) {
     int s;
     while(s=yylex()){

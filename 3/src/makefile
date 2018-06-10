@@ -7,6 +7,22 @@ main.o: main.c linkedhash.h
 linkedhash.o: linkedhash.c linkedhash.h
 	gcc -c -g -Wall linkedhash.c
 
+dic: y.tab.o lex.yy.o linkedhash.o
+	gcc -o dic y.tab.o lex.yy.o linkedhash.o -ll
+
+y.tab.o: y.tab.c
+	gcc -c y.tab.c
+
+lex.yy.o: lex.yy.c
+	gcc -c lex.yy.c
+
+y.tab.c y.tab.h: dic.y
+	yacc -d dic.y
+
+lex.yy.c: dicionario.l y.tab.h
+	flex dicionario.l
+
+
 clean:
 	rm *.o
 	rm program
