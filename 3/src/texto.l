@@ -74,13 +74,12 @@ int main(int argc, char* argv[]){
   install(palavra1,n2);
 
 
-
+  char *apend = "apendice.html";
   if(argc == 1) {
       out = stdout;
       yylex();
       print_footnote(out);
-      s = "apendice.html"
-      out = fopen(s, "w");
+      out = fopen(apend, "w");
       print_used_list(out);
 
   }
@@ -95,8 +94,7 @@ int main(int argc, char* argv[]){
           reset_indice();
           fclose(out);
       }
-        s = "apendice.html"
-        out = fopen(s, "w");
+        out = fopen(apend, "w");
         print_used_list(out);
   }
 

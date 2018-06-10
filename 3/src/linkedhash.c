@@ -94,15 +94,16 @@ nome lookup_nome(char *s){
     return NULL; /* not found */
 }
 
-void add_to_list(char *n, nlist *l){
+void add_to_list(nome *n, char *word, nlist *l){
   nlist nl = NULL;
 
-  while((*l) != NULL && strcmp((*l)->name,n) < 0){
+  while((*l) != NULL && strcmp((*l)->name,word) < 0){
     l = &(*l)->next;
   }
 
   nl = (struct NLIST *) malloc(sizeof(struct NLIST));
-  (nl)->name = n;
+  (nl)->name = word;
+  (nl)->defn = *n;
   (nl)->next = *l;
   *l = nl;
 }
@@ -114,7 +115,7 @@ nlist get_used_list(){
     for(;counter < HASHSIZE ; counter++){
       for (np = hashtab[counter]; np != NULL; np = np->next)
           if (np->defn->counter > 0){
-              add_to_list((np->name),&result);
+              add_to_list(&(np->defn),(np->name),&result);
           }
     }
   return result;
@@ -179,7 +180,7 @@ void print_footnote(FILE *out){
 }
 
 void reset_indice(){
-    nlist result = NULL;
+
     nlist np;
     int counter = 0;
     for(;counter < HASHSIZE ; counter++){
@@ -188,4 +189,5 @@ void reset_indice(){
             np->defn->indice = -1;
           }
     }
+    state = 0;
 }

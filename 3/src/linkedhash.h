@@ -47,3 +47,5 @@ nome lookup_nome(char *s);
 nlist get_used_list();
 void add_footnote_list(nome *n, nlist *l);
 void print_footnote(FILE *out);
+void reset_indice();
+void print_used_list(FILE *out);
