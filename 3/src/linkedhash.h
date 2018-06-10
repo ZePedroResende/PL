@@ -46,4 +46,4 @@ void add_sin(nome *n, char* syn);
 nome lookup_nome(char *s);
 nlist get_used_list();
 void add_footnote_list(nome *n, nlist *l);
-void print_footnote();
+void print_footnote(FILE *out);

@@ -133,7 +133,7 @@ void add_footnote_list(nome *n, nlist *l){
   *l = nl;
 }
 
-void print_footnote(){
+void print_footnote(FILE *out){
     nlist res = NULL;
     nlist np= NULL;
     int counter = 0;
@@ -145,18 +145,18 @@ void print_footnote(){
     }
     nlist* result = &res;
     while((*result) != NULL){
-      printf("<p id=\"section%d\">[%d]significado: %s; ingles: %s;",
+      fprintf(out,"<p id=\"section%d\">[%d]significado: %s; ingles: %s;",
           (*result)->defn->indice, (*result)->defn->indice,
           (*result)->defn->mean,(*result)->defn->english);
 
-      printf(" sinon:");
+      fprintf(out," sinon:");
       sin *sinon = &((*result)->defn->sinonimos);
       while((*sinon) != NULL){
-        printf("%s,",(*sinon)->name);
+        fprintf(out,"%s,",(*sinon)->name);
         sinon = &(*sinon)->next;
       }
 
-      printf("<p>\n");
+      fprintf(out,"<p>\n");
 
       result = &(*result)->next;
 

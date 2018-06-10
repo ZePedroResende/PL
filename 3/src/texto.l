@@ -1,23 +1,49 @@
 %option noyywrap
 %{
 #include"linkedhash.h"
+FILE *out;
 %}
 
 SPACE ([ \n\t]+)
 NOME ([a-zA-Z]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ]|[0-9])
 
 %%
-{NOME}+   { nome n = lookup_nome(yytext);
+^{NOME}+  {
+            fprintf(out,"<p>");
+            nome n = lookup_nome(yytext);
             if(n){
-              printf("%s <a href=\"#section%d\">[%d]</a>",yytext,n->indice,n->indice);
+              fprintf(out,"%s <a href=\"#section%d\">[%d]</a>",yytext,n->indice,n->indice);
             }
             else{
-              printf("%s",yytext);
+              fprintf(out,"%s",yytext);
             }
           }
+^[ \t]+  {fprintf(out,"<p>%s",yytext);}
+
+
+{NOME}+$ {
+            nome n = lookup_nome(yytext);
+            if(n){
+              fprintf(out,"%s <a href=\"#section%d\">[%d]</a>",yytext,n->indice,n->indice);
+            }
+            else{
+              fprintf(out,"%s",yytext);
+            }
+            fprintf(out,"</p>");
+          }
+\n {fprintf(out,"</p>%s",yytext);}
+{NOME}+   { nome n = lookup_nome(yytext);
+            if(n){
+              fprintf(out,"%s <a href=\"#section%d\">[%d]</a>",yytext,n->indice,n->indice);
+            }
+            else{
+              fprintf(out,"%s",yytext);
+            }
+          }
+(.|[ \t]) {fprintf(out,"%s",yytext);}
 %%
 
-int main(){
+int main(int argc, char* argv[]){
 
   nome n = (new_nome());
   nome n2 = (new_nome());
@@ -46,7 +72,25 @@ int main(){
 
   install(palavra,n);
   install(palavra1,n2);
-  yylex();
-  print_footnote();
+
+
+
+  if(argc == 1) {
+      out = stdout;
+      yylex();
+      print_footnote(out);
+  }
+  else {
+      for(int i = 1; i < argc; i++) {
+          char s[500];
+          sprintf(s, "%s.tex", argv[i]);
+          out = fopen(s, "w");
+          yyin = fopen(argv[i], "r");
+          yylex();
+          print_footnote(out);
+          fclose(out);
+      }
+  }
+
   return 0;
 }
