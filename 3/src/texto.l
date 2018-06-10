@@ -79,17 +79,25 @@ int main(int argc, char* argv[]){
       out = stdout;
       yylex();
       print_footnote(out);
+      s = "apendice.html"
+      out = fopen(s, "w");
+      print_used_list(out);
+
   }
   else {
       for(int i = 1; i < argc; i++) {
           char s[500];
-          sprintf(s, "%s.tex", argv[i]);
+          sprintf(s, "%s.html", argv[i]);
           out = fopen(s, "w");
           yyin = fopen(argv[i], "r");
           yylex();
           print_footnote(out);
+          reset_indice();
           fclose(out);
       }
+        s = "apendice.html"
+        out = fopen(s, "w");
+        print_used_list(out);
   }
 
   return 0;

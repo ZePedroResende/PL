@@ -120,6 +120,20 @@ nlist get_used_list(){
   return result;
 }
 
+void print_used_list(FILE *out){
+    nlist res = get_used_list();
+    nlist* result = &res;
+    while((*result) != NULL){
+      fprintf(out,"<p> %s usado %d vezes; ",
+          (*result)->name, (*result)->defn->counter);
+      fprintf(out,"</p>\n");
+
+      result = &(*result)->next;
+
+
+    }
+}
+
 void add_footnote_list(nome *n, nlist *l){
   nlist nl = NULL;
 
@@ -156,7 +170,7 @@ void print_footnote(FILE *out){
         sinon = &(*sinon)->next;
       }
 
-      fprintf(out,"<p>\n");
+      fprintf(out,"</p>\n");
 
       result = &(*result)->next;
 
@@ -164,3 +178,14 @@ void print_footnote(FILE *out){
     }
 }
 
+void reset_indice(){
+    nlist result = NULL;
+    nlist np;
+    int counter = 0;
+    for(;counter < HASHSIZE ; counter++){
+      for (np = hashtab[counter]; np != NULL; np = np->next)
+          if (np->defn->indice != -1){
+            np->defn->indice = -1;
+          }
+    }
+}
