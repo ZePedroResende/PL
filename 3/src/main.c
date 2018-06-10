@@ -15,7 +15,7 @@ int main(){
   add_sin(&n,sin2);
   add_english(&n,english);
 
-  char *palavra1= "depois1";
+  char *palavra1= "zoloo";
   char *mean1 = "tarde1";
   char *sin11= "atrasado1";
   char *sin21= "lol1";
@@ -51,6 +51,8 @@ sin *s = &(a->sinonimos);
     l = &(*l)->next;
   }
   printf("sdaasdsa\n");
+
+  print_footnote();
 
   return 0;
 }
