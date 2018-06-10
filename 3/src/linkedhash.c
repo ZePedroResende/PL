@@ -1,5 +1,6 @@
 #include"linkedhash.h"
 
+int state = 0;
 
 /* hash: form hash value for string s */
 unsigned hash(char *s)
@@ -55,7 +56,7 @@ nome new_nome(){
   n->sinonimos = NULL;
   n->english = NULL;
   n->counter = 0;
-
+  n->indice = -1;
   return n;
 }
 
@@ -84,6 +85,10 @@ nome lookup_nome(char *s){
     for (np = hashtab[hash(s)]; np != NULL; np = np->next)
         if (strcmp(s, np->name) == 0){
             np->defn->counter++;
+            if(np->defn->indice == -1){
+              state++;
+              np->defn->indice = state;
+            }
             return np->defn; /* found */
         }
     return NULL; /* not found */
@@ -114,3 +119,48 @@ nlist get_used_list(){
     }
   return result;
 }
+
+void add_footnote_list(nome *n, nlist *l){
+  nlist nl = NULL;
+
+  while((*l) != NULL && (*l)->defn->indice < (*n)->indice ){
+    l = &(*l)->next;
+  }
+
+  nl = (struct NLIST *) malloc(sizeof(struct NLIST));
+  (nl)->defn = *n;
+  (nl)->next = *l;
+  *l = nl;
+}
+
+void print_footnote(){
+    nlist res = NULL;
+    nlist np= NULL;
+    int counter = 0;
+    for(;counter < HASHSIZE ; counter++){
+      for (np = hashtab[counter]; np != NULL; np = np->next)
+          if (np->defn->counter > 0){
+              add_footnote_list(&(np->defn),&res);
+          }
+    }
+    nlist* result = &res;
+    while((*result) != NULL){
+      printf("<p id=\"section%d\">[%d]significado: %s; ingles: %s;",
+          (*result)->defn->indice, (*result)->defn->indice,
+          (*result)->defn->mean,(*result)->defn->english);
+
+      printf(" sinon:");
+      sin *sinon = &((*result)->defn->sinonimos);
+      while((*sinon) != NULL){
+        printf("%s,",(*sinon)->name);
+        sinon = &(*sinon)->next;
+      }
+
+      printf("<p>\n");
+
+      result = &(*result)->next;
+
+
+    }
+}
+
