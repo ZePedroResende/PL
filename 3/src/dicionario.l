@@ -23,8 +23,6 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
 <mean>\"                                      {BEGIN (word);}
 
-<mean>\n                                      ;
-
 <mean>{STRING}+                               {yylval.texto = strdup(yytext); return MEAN;}
 
 <word>[\ \t]*syn:[\ \t]*\"                    {BEGIN (syn);}

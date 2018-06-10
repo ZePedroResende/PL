@@ -20,16 +20,16 @@ nome argumentos;
 
 Dicionario: ListaPal;
 
-ListaPal: ListaPal Palavra {install(entry,argumentos);}
+ListaPal: ListaPal Palavra {install(entry,argumentos);printf("INSTALLING\n");}
         | ;
 
-Palavra: Nome Conteudo {printf("INSTALLING\n");};
+Palavra: Nome ListaArg;
 
 Nome: WORD {argumentos = new_nome(); 
         entry = $1;
         printf("PALAVRA %s\n", entry);};
 
-Conteudo: Conteudo Argumento
+ListaArg: ListaArg Argumento
         | ;
 
 Argumento: Mean
@@ -44,6 +44,7 @@ English: ENGLISH {add_english(&argumentos, $1); printf("ENG\n");};
 int main() {
   yyparse();
   printf("*******************\nIM DONE! Here are STATS:\n");
+  printf("Number of words saved: %d\n", numWords());
   printf("Does 'ato' exist? %d\n", (lookup("ato")!=NULL));
   return 0;
 }

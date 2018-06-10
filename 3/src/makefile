@@ -24,5 +24,5 @@ lex.yy.c: dicionario.l y.tab.h
 
 
 clean:
-	rm *.o
-	rm program
+	@rm *.o >/dev/null 2>&1
+	@rm program >/dev/null 2>&1

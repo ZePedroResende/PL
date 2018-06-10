@@ -429,7 +429,7 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "MEAN", "SYN", "ENGLISH", "WORD",
-  "$accept", "Dicionario", "ListaPal", "Palavra", "Nome", "Conteudo",
+  "$accept", "Dicionario", "ListaPal", "Palavra", "Nome", "ListaArg",
   "Argumento", "Mean", "Syn", "English", 0
 };
 #endif
@@ -1323,12 +1323,7 @@ yyreduce:
     {
         case 3:
 #line 23 "dic.y"
-    {install(entry,argumentos);}
-    break;
-
-  case 5:
-#line 26 "dic.y"
-    {printf("INSTALLING\n");}
+    {install(entry,argumentos);printf("INSTALLING\n");}
     break;
 
   case 6:
@@ -1355,7 +1350,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 1359 "y.tab.c"
+#line 1354 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1574,6 +1569,7 @@ yyreturn:
 int main() {
   yyparse();
   printf("*******************\nIM DONE! Here are STATS:\n");
+  printf("Number of words saved: %d\n", numWords());
   printf("Does 'ato' exist? %d\n", (lookup("ato")!=NULL));
   return 0;
 }
