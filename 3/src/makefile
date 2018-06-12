@@ -1,27 +1,43 @@
-program: texto.l linkedhash.o
-	flex texto.l
-	gcc  lex.yy.c linkedhash.o -o program
+sttc: sttc.o y.tab.o linkDicionario.o linkTexto.o linkedhash.o html.o
+	@gcc -o sttc sttc.o y.tab.o linkDicionario.o linkTexto.o linkedhash.o html.o -ll
+	@make clean
+	@mkdir -p ../html/ > /dev/null 2>&1
+	@cp style.css ../html > /dev/null 2>&1
+	@mv sttc ../ > /dev/null 2>&1
 
-linkedhash.o: linkedhash.c linkedhash.h
-	gcc -c -g -Wall linkedhash.c
+sttc.o: sttc.c linkTexto.o
+	@gcc -c sttc.c 
 
-dicionary: y.tab.o lex.yy.o linkedhash.o
-	gcc -o dic y.tab.o lex.yy.o linkedhash.o -ll
+linkTexto.o: lexTexto.c y.tab.h
+	@gcc -c lex.texto.c -o linkTexto.o
+
+lexTexto.c: texto.l
+	@echo "\033[0;31mBuilding binary...\033[0m"
+	@flex -l -P texto texto.l > /dev/null 2>&1
 
 y.tab.o: y.tab.c
-	gcc -c y.tab.c
+	@gcc -c y.tab.c
+
+linkDicionario.o: lex.yy.c y.tab.h
+	@gcc -c lex.yy.c -o linkDicionario.o
 
 lex.yy.o: lex.yy.c
-	gcc -c lex.yy.c
+	@gcc -c lex.yy.c
 
-y.tab.c y.tab.h: dic.y
-	yacc -d dic.y
+y.tab.c y.tab.h: dicionario.y
+	@yacc -d dicionario.y
 
 lex.yy.c: dicionario.l y.tab.h
-	flex dicionario.l
+	@flex dicionario.l
 
+linkedhash.o: linkedhash.c linkedhash.h
+	@gcc -c -g -Wall linkedhash.c
+
+html.o: html.c html.h
+	@gcc -c -g -Wall html.c
 
 clean:
-  @rm lex.yy.c >/dev/null 2>&1
-	@rm *.o >/dev/null 2>&1
-	@rm program >/dev/null 2>&1
+	@rm -f lex.yy.c lex.texto.c y.tab.c y.tab.h > /dev/null 2>&1
+	@rm -rf ../html > /dev/null 2>&1
+	@rm -f *.o > /dev/null 2>&1
+	@rm -f ../sttc > /dev/null 2>&1

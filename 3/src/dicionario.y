@@ -1,6 +1,8 @@
 %{
 #include"linkedhash.h"
+#include "lexDic.h"
 
+extern FILE* yyin;
 extern int yylex();
 extern int yylineno;
 extern char *yytext;
@@ -37,11 +39,12 @@ Argumento: MEAN {add_mean(&argumentos, $1);}
          | ENGLISH {add_english(&argumentos, $1);};
 
 %%
-int main() {
+void parseDicionario(char* texto){
+  char in[500];
+  sprintf(in, "files/%s", texto);
+  yyin = fopen(in, "r");
   yyparse();
-  printf("*******************\nIM DONE! Here are STATS:\n");
-  printf("Number of words saved: %d\n", numWords());
-  return 0;
+  printf("Number of words in dictionary: %d\n", numWords());
 }
 
 void yyerror(char *erro){                                               

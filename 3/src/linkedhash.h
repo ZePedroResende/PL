@@ -1,6 +1,9 @@
+#ifndef _INCLUDES
+#define _INCLUDES
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
+#endif
 
 typedef struct SIN {
   struct SIN *next;
