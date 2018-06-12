@@ -2,7 +2,6 @@
 
 %{
 #include <stdio.h>
-#include "y.tab.h"
 %}
 
 STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
@@ -10,8 +9,8 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ 
 %option noyywrap
 %%
 {STRING}+\{                                   {yytext[yyleng-1]='\0';
-                                               yylval.texto = strdup(yytext);
-                                               BEGIN (word); return WORD;}
+                                               printf("\nWORD: %s\n", yytext);
+                                               BEGIN (word);}
 
 <word>\}                                      {BEGIN 0;
                                                }
@@ -22,8 +21,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ 
 
 <mean>\"                                      {BEGIN (word);}
 
-<mean>{STRING}+                               {yylval.texto = strdup(yytext);
-                                               return MEAN;}
+<mean>{STRING}+                               {printf("MEAN: %s\n", yytext);}
 
 <word>[\ \t]*syn:[\ \t]*\"                    {BEGIN (syn);}
 
@@ -31,8 +29,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ 
 
 <syn>\n                                       ;
 
-<syn>{STRING}+                                {yylval.texto = strdup(yytext); 
-                                               return SYN;}
+<syn>{STRING}+                                {printf("SYN: %s\n", yytext);}
 
 <word>[\ \t]*english:[\ \t]*\"                {BEGIN (english);}
 
@@ -40,8 +37,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ 
 
 <english>\n                                   ;
 
-<english>{STRING}+                            {yylval.texto = strdup(yytext);   
-                                               return ENGLISH;}
+<english>{STRING}+                            {printf("ENGLISH: %s\n", yytext);}
 
 .|\n                                          ;
 %%

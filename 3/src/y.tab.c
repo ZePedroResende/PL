@@ -353,11 +353,11 @@ union yyalloc
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  7
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  10
+#define YYNNTS  7
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  14
+#define YYNRULES  11
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  15
+#define YYNSTATES  12
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -404,22 +404,22 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint8 yyprhs[] =
 {
        0,     0,     3,     5,     8,     9,    12,    14,    17,    18,
-      20,    22,    24,    26,    28
+      20,    22
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
        8,     0,    -1,     9,    -1,     9,    10,    -1,    -1,    11,
-      12,    -1,     6,    -1,    12,    13,    -1,    -1,    14,    -1,
-      15,    -1,    16,    -1,     3,    -1,     4,    -1,     5,    -1
+      12,    -1,     6,    -1,    12,    13,    -1,    -1,     3,    -1,
+       4,    -1,     5,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    21,    21,    23,    24,    26,    28,    32,    33,    35,
-      36,    37,    39,    40,    41
+       0,    21,    21,    24,    25,    27,    30,    34,    35,    37,
+      38,    39
 };
 #endif
 
@@ -430,7 +430,7 @@ static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "MEAN", "SYN", "ENGLISH", "WORD",
   "$accept", "Dicionario", "ListaPal", "Palavra", "Nome", "ListaArg",
-  "Argumento", "Mean", "Syn", "English", 0
+  "Argumento", 0
 };
 #endif
 
@@ -447,14 +447,14 @@ static const yytype_uint16 yytoknum[] =
 static const yytype_uint8 yyr1[] =
 {
        0,     7,     8,     9,     9,    10,    11,    12,    12,    13,
-      13,    13,    14,    15,    16
+      13,    13
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
        0,     2,     1,     2,     0,     2,     1,     2,     0,     1,
-       1,     1,     1,     1,     1
+       1,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -462,14 +462,14 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       4,     0,     2,     1,     6,     3,     8,     5,    12,    13,
-      14,     7,     9,    10,    11
+       4,     0,     2,     1,     6,     3,     8,     5,     9,    10,
+      11,     7
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1,     2,     5,     6,     7,    11,    12,    13,    14
+      -1,     1,     2,     5,     6,     7,    11
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
@@ -478,13 +478,13 @@ static const yytype_int8 yydefgoto[] =
 static const yytype_int8 yypact[] =
 {
       -4,     3,    -2,    -4,    -4,    -4,    -4,    -3,    -4,    -4,
-      -4,    -4,    -4,    -4,    -4
+      -4,    -4
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4
+      -4,    -4,    -4,    -4,    -4,    -4,    -4
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -507,7 +507,7 @@ static const yytype_uint8 yycheck[] =
 static const yytype_uint8 yystos[] =
 {
        0,     8,     9,     0,     6,    10,    11,    12,     3,     4,
-       5,    13,    14,    15,    16
+       5,    13
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1322,29 +1322,29 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-#line 23 "dic.y"
+#line 24 "dic.y"
     {install(entry,argumentos);printf("INSTALLING\n");}
     break;
 
   case 6:
-#line 28 "dic.y"
+#line 30 "dic.y"
     {argumentos = new_nome(); 
         entry = (yyvsp[(1) - (1)].texto);
         printf("PALAVRA %s\n", entry);}
     break;
 
-  case 12:
-#line 39 "dic.y"
+  case 9:
+#line 37 "dic.y"
     {add_mean(&argumentos, (yyvsp[(1) - (1)].texto)); printf("MEAN %s\n", (yyvsp[(1) - (1)].texto));}
     break;
 
-  case 13:
-#line 40 "dic.y"
+  case 10:
+#line 38 "dic.y"
     {add_sin(&argumentos, (yyvsp[(1) - (1)].texto)); printf("SYN\n");}
     break;
 
-  case 14:
-#line 41 "dic.y"
+  case 11:
+#line 39 "dic.y"
     {add_english(&argumentos, (yyvsp[(1) - (1)].texto)); printf("ENG\n");}
     break;
 
@@ -1564,7 +1564,7 @@ yyreturn:
 }
 
 
-#line 43 "dic.y"
+#line 41 "dic.y"
 
 int main() {
   yyparse();
@@ -1577,3 +1577,4 @@ int main() {
 void yyerror(char *erro){                                               
   fprintf(stderr, "HELP! ERROR:%s \n", erro);
 }
+

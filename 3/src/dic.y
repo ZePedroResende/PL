@@ -13,39 +13,34 @@ nome argumentos;
   char* texto;
 }
 
-%type<texto> MEAN SYN ENGLISH WORD
+%type<texto> WORD MEAN SYN ENGLISH 
 %token MEAN SYN ENGLISH WORD
 
 %%
 
-Dicionario: ListaPal;
+Dicionario: ListaPal
+          ;
 
-ListaPal: ListaPal Palavra {install(entry,argumentos);printf("INSTALLING\n");}
+ListaPal: ListaPal Palavra {install(entry,argumentos);}
         | ;
 
-Palavra: Nome ListaArg;
+Palavra: Nome ListaArg
+       ;
 
-Nome: WORD {argumentos = new_nome(); 
-        entry = $1;
-        printf("PALAVRA %s\n", entry);};
+Nome: WORD {argumentos = new_nome(); entry = $1;};
 
 ListaArg: ListaArg Argumento
         | ;
 
-Argumento: Mean
-         | Syn
-         | English;
-
-Mean: MEAN {add_mean(&argumentos, $1); printf("MEAN %s\n", $1);};
-Syn: SYN {add_sin(&argumentos, $1); printf("SYN\n");};
-English: ENGLISH {add_english(&argumentos, $1); printf("ENG\n");};
+Argumento: MEAN {add_mean(&argumentos, $1);}
+         | SYN {add_sin(&argumentos, $1);}
+         | ENGLISH {add_english(&argumentos, $1);};
 
 %%
 int main() {
   yyparse();
   printf("*******************\nIM DONE! Here are STATS:\n");
   printf("Number of words saved: %d\n", numWords());
-  printf("Does 'ato' exist? %d\n", (lookup("ato")!=NULL));
   return 0;
 }
 

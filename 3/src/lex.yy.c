@@ -403,7 +403,7 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    6,    1,    1,    1,    1,    1,    6,
         6,    6,    6,    1,    1,    1,    6,    6,    6,    6,
         1,    1,    6,    1,    1,    1,    6,    1,    6,    6,
-        1,    1,    1,    1,    1,    6,    1,    1,    1,    1,
+        6,    1,    1,    1,    1,    6,    1,    1,    1,    1,
         1,    1,    1,    1,    6,    1,    1,    1,    1,    1,
 
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -783,35 +783,35 @@ YY_RULE_SETUP
 #line 12 "dicionario.l"
 {yytext[yyleng-1]='\0';
                                                yylval.texto = strdup(yytext);
-                                               return WORD;
-                                               BEGIN (word);}
+                                               BEGIN (word); return WORD;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 17 "dicionario.l"
+#line 16 "dicionario.l"
 {BEGIN 0;
                                                }
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 20 "dicionario.l"
+#line 19 "dicionario.l"
 ;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 22 "dicionario.l"
+#line 21 "dicionario.l"
 {BEGIN (mean);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 24 "dicionario.l"
+#line 23 "dicionario.l"
 {BEGIN (word);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 26 "dicionario.l"
-{yylval.texto = strdup(yytext); return MEAN;}
+#line 25 "dicionario.l"
+{yylval.texto = strdup(yytext);
+                                               return MEAN;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
@@ -832,41 +832,43 @@ YY_RULE_SETUP
 case 10:
 YY_RULE_SETUP
 #line 34 "dicionario.l"
-{yylval.texto = strdup(yytext); return SYN;}
+{yylval.texto = strdup(yytext); 
+                                               return SYN;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 36 "dicionario.l"
+#line 37 "dicionario.l"
 {BEGIN (english);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 38 "dicionario.l"
+#line 39 "dicionario.l"
 {BEGIN (word);}
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 40 "dicionario.l"
+#line 41 "dicionario.l"
 ;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 42 "dicionario.l"
-{yylval.texto = strdup(yytext); return ENGLISH;}
+#line 43 "dicionario.l"
+{yylval.texto = strdup(yytext);   
+                                               return ENGLISH;}
 	YY_BREAK
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 44 "dicionario.l"
+#line 46 "dicionario.l"
 ;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 45 "dicionario.l"
+#line 47 "dicionario.l"
 ECHO;
 	YY_BREAK
-#line 870 "lex.yy.c"
+#line 872 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(mean):
 case YY_STATE_EOF(syn):
@@ -1867,7 +1869,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 45 "dicionario.l"
+#line 47 "dicionario.l"
 
 
 /*int main(int argc, char *argv[]) {
