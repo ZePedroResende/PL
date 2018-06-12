@@ -45,11 +45,3 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ 
 
 .|\n                                          ;
 %%
-/*int main(int argc, char *argv[]) {
-    int s;
-    while(s=yylex()){
-        printf("%d\n",s);
-    }
-    
-    return 0;
-}*/

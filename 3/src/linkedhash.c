@@ -128,6 +128,7 @@ int numWords(){
     for (int i=0;i<HASHSIZE;i++)
         for (np = hashtab[i]; np != NULL; np = np->next) count++;
     return count;
+}
 
 void print_used_list(FILE *out){
     nlist res = get_used_list();
