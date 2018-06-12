@@ -1,8 +1,6 @@
-program: main.o linkedhash.o
-	gcc -o program main.o linkedhash.o
-
-main.o: main.c linkedhash.h
-	gcc -c -g -Wall main.c
+program: texto.l linkedhash.o
+	flex texto.l
+	gcc  lex.yy.c linkedhash.o -o program
 
 linkedhash.o: linkedhash.c linkedhash.h
 	gcc -c -g -Wall linkedhash.c
@@ -24,5 +22,6 @@ lex.yy.c: dicionario.l y.tab.h
 
 
 clean:
+  @rm lex.yy.c >/dev/null 2>&1
 	@rm *.o >/dev/null 2>&1
 	@rm program >/dev/null 2>&1

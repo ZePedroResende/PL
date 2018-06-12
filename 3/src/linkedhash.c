@@ -1,5 +1,6 @@
 #include"linkedhash.h"
 
+int state = 0;
 
 /* hash: form hash value for string s */
 unsigned hash(char *s)
@@ -55,7 +56,7 @@ nome new_nome(){
   n->sinonimos = NULL;
   n->english = NULL;
   n->counter = 0;
-
+  n->indice = -1;
   return n;
 }
 
@@ -84,20 +85,25 @@ nome lookup_nome(char *s){
     for (np = hashtab[hash(s)]; np != NULL; np = np->next)
         if (strcmp(s, np->name) == 0){
             np->defn->counter++;
+            if(np->defn->indice == -1){
+              state++;
+              np->defn->indice = state;
+            }
             return np->defn; /* found */
         }
     return NULL; /* not found */
 }
 
-void add_to_list(char *n, nlist *l){
+void add_to_list(nome *n, char *word, nlist *l){
   nlist nl = NULL;
 
-  while((*l) != NULL && strcmp((*l)->name,n) < 0){
+  while((*l) != NULL && strcmp((*l)->name,word) < 0){
     l = &(*l)->next;
   }
 
   nl = (struct NLIST *) malloc(sizeof(struct NLIST));
-  (nl)->name = n;
+  (nl)->name = word;
+  (nl)->defn = *n;
   (nl)->next = *l;
   *l = nl;
 }
@@ -109,11 +115,12 @@ nlist get_used_list(){
     for(;counter < HASHSIZE ; counter++){
       for (np = hashtab[counter]; np != NULL; np = np->next)
           if (np->defn->counter > 0){
-              add_to_list((np->name),&result);
+              add_to_list(&(np->defn),(np->name),&result);
           }
     }
   return result;
 }
+
 
 int numWords(){
     int count=0;
@@ -121,4 +128,74 @@ int numWords(){
     for (int i=0;i<HASHSIZE;i++)
         for (np = hashtab[i]; np != NULL; np = np->next) count++;
     return count;
+
+void print_used_list(FILE *out){
+    nlist res = get_used_list();
+    nlist* result = &res;
+    while((*result) != NULL){
+      fprintf(out,"<p> %s usado %d vezes; ",
+          (*result)->name, (*result)->defn->counter);
+      fprintf(out,"</p>\n");
+
+      result = &(*result)->next;
+
+
+    }
+}
+
+void add_footnote_list(nome *n, nlist *l){
+  nlist nl = NULL;
+
+  while((*l) != NULL && (*l)->defn->indice < (*n)->indice ){
+    l = &(*l)->next;
+  }
+
+  nl = (struct NLIST *) malloc(sizeof(struct NLIST));
+  (nl)->defn = *n;
+  (nl)->next = *l;
+  *l = nl;
+}
+
+void print_footnote(FILE *out){
+    nlist res = NULL;
+    nlist np= NULL;
+    int counter = 0;
+    for(;counter < HASHSIZE ; counter++){
+      for (np = hashtab[counter]; np != NULL; np = np->next)
+          if (np->defn->counter > 0){
+              add_footnote_list(&(np->defn),&res);
+          }
+    }
+    nlist* result = &res;
+    while((*result) != NULL){
+      fprintf(out,"<p id=\"section%d\">[%d]significado: %s; ingles: %s;",
+          (*result)->defn->indice, (*result)->defn->indice,
+          (*result)->defn->mean,(*result)->defn->english);
+
+      fprintf(out," sinon:");
+      sin *sinon = &((*result)->defn->sinonimos);
+      while((*sinon) != NULL){
+        fprintf(out,"%s,",(*sinon)->name);
+        sinon = &(*sinon)->next;
+      }
+
+      fprintf(out,"</p>\n");
+
+      result = &(*result)->next;
+
+
+    }
+}
+
+void reset_indice(){
+
+    nlist np;
+    int counter = 0;
+    for(;counter < HASHSIZE ; counter++){
+      for (np = hashtab[counter]; np != NULL; np = np->next)
+          if (np->defn->indice != -1){
+            np->defn->indice = -1;
+          }
+    }
+    state = 0;
 }
