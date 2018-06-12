@@ -1,4 +1,5 @@
 #include"linkedhash.h"
+#include "html.h"
 
 int state = 0;
 
@@ -133,15 +134,15 @@ int numWords(){
 void print_used_list(FILE *out){
     nlist res = get_used_list();
     nlist* result = &res;
+    htmlApenStart(out, "Apêndice");
     while((*result) != NULL){
-      fprintf(out,"<p> %s usado %d vezes; ",
-          (*result)->name, (*result)->defn->counter);
-      fprintf(out,"</p>\n");
-
-      result = &(*result)->next;
-
-
+        fprintf(out, "<tr class=\"row100 body\">" );
+		fprintf(out, "<td class=\"cell100 column1\"> %s </td>",(*result)->name);
+		fprintf(out, "<td class=\"cell100 column2\"> %d </td>",(*result)->defn->counter);
+		fprintf(out, "</tr>" );
+        result = &(*result)->next;
     }
+    htmlApenEnd(out);
 }
 
 void add_footnote_list(nome *n, nlist *l){
@@ -169,17 +170,17 @@ void print_footnote(FILE *out){
     }
     nlist* result = &res;
     while((*result) != NULL){
-      fprintf(out,"<p id=\"section%d\">[%d]significado: %s; ingles: %s;",
+      fprintf(out,"<p id=\"section%d\">[%d] <b>Significado</b>: %s; <b>Inglês</b>: %s;",
           (*result)->defn->indice, (*result)->defn->indice,
           (*result)->defn->mean,(*result)->defn->english);
 
-      fprintf(out," sinon:");
+      fprintf(out," <b>Sinónimo</b>:");
       sin *sinon = &((*result)->defn->sinonimos);
-      while((*sinon) != NULL){
-        fprintf(out,"%s,",(*sinon)->name);
+      while((sinon !=NULL) && ((*sinon)->next != NULL)){
+        fprintf(out,"%s, ",(*sinon)->name);
         sinon = &(*sinon)->next;
       }
-
+      fprintf(out,"%s.",(*sinon)->name);
       fprintf(out,"</p>\n");
 
       result = &(*result)->next;

@@ -46,7 +46,7 @@ NOME ([a-zA-Z]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ]|[0-9])
 
 void lex(int argc, char* argv[]){
 
-  char *apend = "apendice.html";
+  char *apend = "html/apendice.html";
   if(argc == 1) {
       out = stdout;
       yylex();
@@ -57,17 +57,21 @@ void lex(int argc, char* argv[]){
   }
   else {
       for(int i = 1; i < argc; i++) {
-          char s[500];
-          sprintf(s, "%s.html", argv[i]);
+          char s[500], in[500];
+          sprintf(s, "html/%s.html", argv[i]);
+          sprintf(in, "files/%s", argv[i]);
           out = fopen(s, "w");
-          yyin = fopen(argv[i], "r");
-          htmlStart(out);
+          yyin = fopen(in, "r");
+          htmlStart(out, argv[i]);
           yylex();
+          textEnd(out);
           print_footnote(out);
           reset_indice();
+          htmlEnd(out);
           fclose(out);
       }
         out = fopen(apend, "w");
         print_used_list(out);
+        system("src/indexGen.sh");
   }
 }

@@ -5,4 +5,9 @@
 #include<stdlib.h>
 #endif
 
-void htmlStart(FILE*);
+void htmlStart(FILE*, char*);
+void textEnd(FILE*);
+void htmlEnd(FILE*);
+
+void htmlApenStart(FILE*, char*);
+void htmlApenEnd(FILE* out);

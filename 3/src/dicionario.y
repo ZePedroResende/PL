@@ -40,10 +40,11 @@ Argumento: MEAN {add_mean(&argumentos, $1);}
 
 %%
 void parseDicionario(char* texto){
-  yyin = fopen(texto, "r");
+  char in[500];
+  sprintf(in, "files/%s", texto);
+  yyin = fopen(in, "r");
   yyparse();
-  printf("*******************\nIM DONE! Here are STATS:\n");
-  printf("Number of words saved: %d\n", numWords());
+  printf("Number of words in dictionary: %d\n", numWords());
 }
 
 void yyerror(char *erro){                                               
