@@ -7,7 +7,7 @@ main.o: main.c linkedhash.h
 linkedhash.o: linkedhash.c linkedhash.h
 	gcc -c -g -Wall linkedhash.c
 
-dic: y.tab.o lex.yy.o linkedhash.o
+dicionary: y.tab.o lex.yy.o linkedhash.o
 	gcc -o dic y.tab.o lex.yy.o linkedhash.o -ll
 
 y.tab.o: y.tab.c
