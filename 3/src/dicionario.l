@@ -2,16 +2,16 @@
 
 %{
 #include <stdio.h>
-char* mean, syn, english, w;
+#include "y.tab.h"
 %}
 
-STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
+STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
+%option noyywrap
 %%
 {STRING}+\{                                   {yytext[yyleng-1]='\0';
                                                yylval.texto = strdup(yytext);
-                                               return w;
-                                               BEGIN (word);}
+                                               BEGIN (word); return WORD;}
 
 <word>\}                                      {BEGIN 0;
                                                }
@@ -22,9 +22,8 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
 <mean>\"                                      {BEGIN (word);}
 
-<mean>\n                                      ;
-
-<mean>{STRING}+                               {yylval.texto = strdup(yytext); return MEAN;}
+<mean>{STRING}+                               {yylval.texto = strdup(yytext);
+                                               return MEAN;}
 
 <word>[\ \t]*syn:[\ \t]*\"                    {BEGIN (syn);}
 
@@ -32,7 +31,8 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
 <syn>\n                                       ;
 
-<syn>{STRING}+                                {yylval.texto = strdup(yytext); return SYN;}
+<syn>{STRING}+                                {yylval.texto = strdup(yytext); 
+                                               return SYN;}
 
 <word>[\ \t]*english:[\ \t]*\"                {BEGIN (english);}
 
@@ -40,15 +40,11 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ )
 
 <english>\n                                   ;
 
-<english>{STRING}+                            {yylval.texto = strdup(yytext); return ENGLISH;}
+<english>{STRING}+                            {yylval.texto = strdup(yytext);   
+                                               return ENGLISH;}
 
 .|\n                                          ;
 %%
-
-int yywrap(){
-	return 1;
-}
-
 /*int main(int argc, char *argv[]) {
     int s;
     while(s=yylex()){

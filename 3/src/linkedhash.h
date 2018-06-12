@@ -38,6 +38,7 @@ nlist install(char *name, nome defn);
 
 char *strdupl(char *s); /* make a duplicate of s */
 
+int numWords(); /*number of words saved*/
 
 nome new_nome();
 void add_mean(nome *n, char* mean);
