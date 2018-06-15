@@ -1,5 +1,5 @@
-sttc: sttc.o y.tab.o linkDicionario.o linkTexto.o linkedhash.o html.o
-	@gcc -o sttc sttc.o y.tab.o linkDicionario.o linkTexto.o linkedhash.o html.o -ll
+sttc: sttc.o y.tab.o linkDicionario.o linkTexto.o linkedhash.o html.o htmlDic.o linkHtml.o
+	@gcc -o sttc sttc.o y.tab.o linkDicionario.o linkTexto.o linkedhash.o html.o htmlDic.o linkHtml.o -ll
 	@make clean
 	@mkdir -p ../html/ > /dev/null 2>&1
 	@cp style.css ../html > /dev/null 2>&1
@@ -18,7 +18,7 @@ lexTexto.c: texto.l
 y.tab.o: y.tab.c
 	@gcc -c y.tab.c
 
-linkDicionario.o: lex.yy.c y.tab.h
+linkDicionario.o: lex.yy.c y.tab.h 
 	@gcc -c lex.yy.c -o linkDicionario.o
 
 lex.yy.o: lex.yy.c
@@ -35,6 +35,15 @@ linkedhash.o: linkedhash.c linkedhash.h
 
 html.o: html.c html.h
 	@gcc -c -g -Wall html.c
+
+htmlDic.o: htmlDic.c htmlDic.h
+	@gcc -c -g -Wall htmlDic.c
+
+lexHtml.c: dicHtml.l
+	@flex -l -P html dicHtml.l > /dev/null 2>&1
+
+linkHtml.o: lexHtml.c y.tab.h
+	@gcc -c lex.html.c -o linkHtml.o
 
 clean:
 	@rm -f lex.yy.c lex.texto.c y.tab.c y.tab.h > /dev/null 2>&1

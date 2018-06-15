@@ -2,6 +2,7 @@
 #include "y.tab.h"
 #include "lexDic.h"
 #include "lexTex.h"
+#include "lexDicHtml.h"
 
 void usage();
 
@@ -12,8 +13,8 @@ int main(int argc, char* argv[]){
         usage();
         return -1;
     }
-    
     parseDicionario(argv[1]);
+    goHtml(argv[1]);
     lex(argc-1, argv+1);
 
     return 0;
